@@ -1,1 +1,13 @@
-hola Manuela, Felipe, Emilia
+programa MiPrograma;
+
+const
+    MAX_ALUMNOS = 20
+var
+    suma_notas : numerico // suma de todas las notas leidas
+    prom : numerico // promedio del curso
+    cnb : numerico // cantidad con notas bajas
+    k : numerico
+
+inicio
+    repetir
+fin
