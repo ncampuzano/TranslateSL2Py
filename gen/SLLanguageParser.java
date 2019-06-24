@@ -18,8 +18,9 @@ public class SLLanguageParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, COMMENT=17, 
-		LINE_COMMENT=18, INICIO=19, FIN=20, PROGRAMA=21, PIZQ=22, PDER=23, ID=24, 
-		ESP=25, NUM=26, DOUBLE=27, BOOL=28, CADENA=29, SMCOLON=30;
+		LINE_COMMENT=18, INICIO=19, FIN=20, PROGRAMA=21, PIZQ=22, PDER=23, BIZQ=24, 
+		BDER=25, LIZQ=26, LDER=27, ID=28, ESP=29, NUM=30, DOUBLE=31, BOOL=32, 
+		CADENA=33, SMCOLON=34;
 	public static final int
 		RULE_s = 0, RULE_settings = 1, RULE_assignationConst = 2, RULE_assignationTypes = 3, 
 		RULE_assignationVar = 4, RULE_objeto = 5, RULE_tipo = 6, RULE_expr = 7, 
@@ -39,7 +40,8 @@ public class SLLanguageParser extends Parser {
 			null, "'const'", "'tipos'", "'var'", "','", "'='", "':'", "'numerico'", 
 			"'cadena'", "'logico'", "'vector'", "'matriz'", "'registro'", "'si'", 
 			"'repetir'", "'mientras'", "'imprimir'", null, null, "'inicio'", "'fin'", 
-			"'programa'", "'('", "')'", null, null, null, null, null, null, "';'"
+			"'programa'", "'('", "')'", "'['", "']'", "'{'", "'}'", null, null, null, 
+			null, null, null, "';'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -47,8 +49,8 @@ public class SLLanguageParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, "COMMENT", "LINE_COMMENT", "INICIO", "FIN", 
-			"PROGRAMA", "PIZQ", "PDER", "ID", "ESP", "NUM", "DOUBLE", "BOOL", "CADENA", 
-			"SMCOLON"
+			"PROGRAMA", "PIZQ", "PDER", "BIZQ", "BDER", "LIZQ", "LDER", "ID", "ESP", 
+			"NUM", "DOUBLE", "BOOL", "CADENA", "SMCOLON"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -110,13 +112,13 @@ public class SLLanguageParser extends Parser {
 		public TerminalNode FIN() { return getToken(SLLanguageParser.FIN, 0); }
 		public TerminalNode PROGRAMA() { return getToken(SLLanguageParser.PROGRAMA, 0); }
 		public TerminalNode ID() { return getToken(SLLanguageParser.ID, 0); }
-		public TerminalNode SMCOLON() { return getToken(SLLanguageParser.SMCOLON, 0); }
 		public List<SettingsContext> settings() {
 			return getRuleContexts(SettingsContext.class);
 		}
 		public SettingsContext settings(int i) {
 			return getRuleContext(SettingsContext.class,i);
 		}
+		public TerminalNode SMCOLON() { return getToken(SLLanguageParser.SMCOLON, 0); }
 		public SContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -143,7 +145,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31);
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==PROGRAMA) {
@@ -152,30 +154,38 @@ public class SLLanguageParser extends Parser {
 				match(PROGRAMA);
 				setState(29);
 				match(ID);
-				setState(30);
-				match(SMCOLON);
+				setState(31);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==SMCOLON) {
+					{
+					setState(30);
+					match(SMCOLON);
+					}
+				}
+
 				}
 			}
 
-			setState(36);
+			setState(38);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2))) != 0)) {
 				{
 				{
-				setState(33);
+				setState(35);
 				settings();
 				}
 				}
-				setState(38);
+				setState(40);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(39);
-			match(INICIO);
-			setState(40);
-			body();
 			setState(41);
+			match(INICIO);
+			setState(42);
+			body();
+			setState(43);
 			match(FIN);
 			}
 		}
@@ -223,41 +233,66 @@ public class SLLanguageParser extends Parser {
 	public final SettingsContext settings() throws RecognitionException {
 		SettingsContext _localctx = new SettingsContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_settings);
+		int _la;
 		try {
-			setState(55);
+			setState(60);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__0:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(43);
-				match(T__0);
-				setState(44);
-				assignationConst();
 				setState(45);
-				match(SMCOLON);
+				match(T__0);
+				setState(46);
+				assignationConst();
+				setState(48);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==SMCOLON) {
+					{
+					setState(47);
+					match(SMCOLON);
+					}
+				}
+
 				}
 				break;
 			case T__1:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(47);
+				setState(50);
 				match(T__1);
-				setState(48);
+				setState(51);
 				assignationTypes();
-				setState(49);
-				match(SMCOLON);
+				setState(53);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==SMCOLON) {
+					{
+					setState(52);
+					match(SMCOLON);
+					}
+				}
+
 				}
 				break;
 			case T__2:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(51);
+				setState(55);
 				match(T__2);
-				setState(52);
+				setState(56);
 				assignationVar();
-				setState(53);
-				match(SMCOLON);
+				setState(58);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==SMCOLON) {
+					{
+					setState(57);
+					match(SMCOLON);
+					}
+				}
+
 				}
 				break;
 			default:
@@ -312,37 +347,37 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67); 
+			setState(72); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(57);
-				match(ID);
 				setState(62);
+				match(ID);
+				setState(67);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__3) {
 					{
 					{
-					setState(58);
+					setState(63);
 					match(T__3);
-					setState(59);
+					setState(64);
 					match(ID);
 					}
 					}
-					setState(64);
+					setState(69);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(65);
+				setState(70);
 				match(T__4);
-				setState(66);
+				setState(71);
 				expr();
 				}
 				}
-				setState(69); 
+				setState(74); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==ID );
@@ -392,17 +427,17 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(72); 
+			setState(77); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(71);
+				setState(76);
 				objeto();
 				}
 				}
-				setState(74); 
+				setState(79); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==ID );
@@ -456,37 +491,37 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86); 
+			setState(91); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(76);
-				match(ID);
 				setState(81);
+				match(ID);
+				setState(86);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==T__3) {
 					{
 					{
-					setState(77);
+					setState(82);
 					match(T__3);
-					setState(78);
+					setState(83);
 					match(ID);
 					}
 					}
-					setState(83);
+					setState(88);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(84);
+				setState(89);
 				match(T__5);
-				setState(85);
+				setState(90);
 				tipo();
 				}
 				}
-				setState(88); 
+				setState(93); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==ID );
@@ -533,11 +568,11 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90);
+			setState(95);
 			match(ID);
-			setState(91);
+			setState(96);
 			match(T__5);
-			setState(92);
+			setState(97);
 			tipo();
 			}
 		}
@@ -554,8 +589,14 @@ public class SLLanguageParser extends Parser {
 
 	public static class TipoContext extends ParserRuleContext {
 		public TerminalNode ID() { return getToken(SLLanguageParser.ID, 0); }
-		public TerminalNode PIZQ() { return getToken(SLLanguageParser.PIZQ, 0); }
+		public TerminalNode BIZQ() { return getToken(SLLanguageParser.BIZQ, 0); }
 		public TerminalNode PDER() { return getToken(SLLanguageParser.PDER, 0); }
+		public TipoContext tipo() {
+			return getRuleContext(TipoContext.class,0);
+		}
+		public TerminalNode BDER() { return getToken(SLLanguageParser.BDER, 0); }
+		public TerminalNode LIZQ() { return getToken(SLLanguageParser.LIZQ, 0); }
+		public TerminalNode LDER() { return getToken(SLLanguageParser.LDER, 0); }
 		public TipoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -579,68 +620,72 @@ public class SLLanguageParser extends Parser {
 		TipoContext _localctx = new TipoContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_tipo);
 		try {
-			setState(107);
+			setState(114);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__6:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(94);
+				setState(99);
 				match(T__6);
 				}
 				break;
 			case T__7:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(95);
+				setState(100);
 				match(T__7);
 				}
 				break;
 			case T__8:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(96);
+				setState(101);
 				match(T__8);
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(97);
+				setState(102);
 				match(ID);
 				}
 				break;
 			case T__9:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(98);
+				setState(103);
 				match(T__9);
-				setState(99);
-				match(PIZQ);
-				setState(100);
+				setState(104);
+				match(BIZQ);
+				setState(105);
 				match(PDER);
+				setState(106);
+				tipo();
 				}
 				break;
 			case T__10:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(101);
+				setState(107);
 				match(T__10);
-				setState(102);
-				match(PIZQ);
-				setState(103);
-				match(PDER);
+				setState(108);
+				match(BIZQ);
+				setState(109);
+				match(BDER);
+				setState(110);
+				tipo();
 				}
 				break;
 			case T__11:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(104);
+				setState(111);
 				match(T__11);
-				setState(105);
-				match(PIZQ);
-				setState(106);
-				match(PDER);
+				setState(112);
+				match(LIZQ);
+				setState(113);
+				match(LDER);
 				}
 				break;
 			default:
@@ -689,7 +734,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(109);
+			setState(116);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -745,17 +790,17 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(112); 
+			setState(119); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(111);
+				setState(118);
 				sentence();
 				}
 				}
-				setState(114); 
+				setState(121); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15))) != 0) );
@@ -808,34 +853,34 @@ public class SLLanguageParser extends Parser {
 		SentenceContext _localctx = new SentenceContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_sentence);
 		try {
-			setState(120);
+			setState(127);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__12:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(116);
+				setState(123);
 				ifSentence();
 				}
 				break;
 			case T__13:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(117);
+				setState(124);
 				repeatSentence();
 				}
 				break;
 			case T__14:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(118);
+				setState(125);
 				whileSentence();
 				}
 				break;
 			case T__15:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(119);
+				setState(126);
 				printSentence();
 				}
 				break;
@@ -880,7 +925,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(122);
+			setState(129);
 			match(T__12);
 			}
 		}
@@ -921,7 +966,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
+			setState(131);
 			match(T__13);
 			}
 		}
@@ -962,7 +1007,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(133);
 			match(T__14);
 			}
 		}
@@ -1003,7 +1048,7 @@ public class SLLanguageParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(128);
+			setState(135);
 			match(T__15);
 			}
 		}
@@ -1019,39 +1064,42 @@ public class SLLanguageParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3 \u0085\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$\u008c\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\5\2\"\n\2\3\2\7\2"+
-		"%\n\2\f\2\16\2(\13\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\5\3:\n\3\3\4\3\4\3\4\7\4?\n\4\f\4\16\4B\13\4\3\4\3\4\6"+
-		"\4F\n\4\r\4\16\4G\3\5\6\5K\n\5\r\5\16\5L\3\6\3\6\3\6\7\6R\n\6\f\6\16\6"+
-		"U\13\6\3\6\3\6\6\6Y\n\6\r\6\16\6Z\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b"+
-		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bn\n\b\3\t\3\t\3\n\6\ns\n\n\r\n\16"+
-		"\nt\3\13\3\13\3\13\3\13\5\13{\n\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17"+
-		"\3\17\2\2\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34\2\3\3\2\34\37\2\u0089"+
-		"\2!\3\2\2\2\49\3\2\2\2\6E\3\2\2\2\bJ\3\2\2\2\nX\3\2\2\2\f\\\3\2\2\2\16"+
-		"m\3\2\2\2\20o\3\2\2\2\22r\3\2\2\2\24z\3\2\2\2\26|\3\2\2\2\30~\3\2\2\2"+
-		"\32\u0080\3\2\2\2\34\u0082\3\2\2\2\36\37\7\27\2\2\37 \7\32\2\2 \"\7 \2"+
-		"\2!\36\3\2\2\2!\"\3\2\2\2\"&\3\2\2\2#%\5\4\3\2$#\3\2\2\2%(\3\2\2\2&$\3"+
-		"\2\2\2&\'\3\2\2\2\')\3\2\2\2(&\3\2\2\2)*\7\25\2\2*+\5\22\n\2+,\7\26\2"+
-		"\2,\3\3\2\2\2-.\7\3\2\2./\5\6\4\2/\60\7 \2\2\60:\3\2\2\2\61\62\7\4\2\2"+
-		"\62\63\5\b\5\2\63\64\7 \2\2\64:\3\2\2\2\65\66\7\5\2\2\66\67\5\n\6\2\67"+
-		"8\7 \2\28:\3\2\2\29-\3\2\2\29\61\3\2\2\29\65\3\2\2\2:\5\3\2\2\2;@\7\32"+
-		"\2\2<=\7\6\2\2=?\7\32\2\2><\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2\2AC\3"+
-		"\2\2\2B@\3\2\2\2CD\7\7\2\2DF\5\20\t\2E;\3\2\2\2FG\3\2\2\2GE\3\2\2\2GH"+
-		"\3\2\2\2H\7\3\2\2\2IK\5\f\7\2JI\3\2\2\2KL\3\2\2\2LJ\3\2\2\2LM\3\2\2\2"+
-		"M\t\3\2\2\2NS\7\32\2\2OP\7\6\2\2PR\7\32\2\2QO\3\2\2\2RU\3\2\2\2SQ\3\2"+
-		"\2\2ST\3\2\2\2TV\3\2\2\2US\3\2\2\2VW\7\b\2\2WY\5\16\b\2XN\3\2\2\2YZ\3"+
-		"\2\2\2ZX\3\2\2\2Z[\3\2\2\2[\13\3\2\2\2\\]\7\32\2\2]^\7\b\2\2^_\5\16\b"+
-		"\2_\r\3\2\2\2`n\7\t\2\2an\7\n\2\2bn\7\13\2\2cn\7\32\2\2de\7\f\2\2ef\7"+
-		"\30\2\2fn\7\31\2\2gh\7\r\2\2hi\7\30\2\2in\7\31\2\2jk\7\16\2\2kl\7\30\2"+
-		"\2ln\7\31\2\2m`\3\2\2\2ma\3\2\2\2mb\3\2\2\2mc\3\2\2\2md\3\2\2\2mg\3\2"+
-		"\2\2mj\3\2\2\2n\17\3\2\2\2op\t\2\2\2p\21\3\2\2\2qs\5\24\13\2rq\3\2\2\2"+
-		"st\3\2\2\2tr\3\2\2\2tu\3\2\2\2u\23\3\2\2\2v{\5\26\f\2w{\5\30\r\2x{\5\32"+
-		"\16\2y{\5\34\17\2zv\3\2\2\2zw\3\2\2\2zx\3\2\2\2zy\3\2\2\2{\25\3\2\2\2"+
-		"|}\7\17\2\2}\27\3\2\2\2~\177\7\20\2\2\177\31\3\2\2\2\u0080\u0081\7\21"+
-		"\2\2\u0081\33\3\2\2\2\u0082\u0083\7\22\2\2\u0083\35\3\2\2\2\r!&9@GLSZ"+
-		"mtz";
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\5\2\"\n\2\5\2$\n\2"+
+		"\3\2\7\2\'\n\2\f\2\16\2*\13\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\5\3\63\n\3\3"+
+		"\3\3\3\3\3\5\38\n\3\3\3\3\3\3\3\5\3=\n\3\5\3?\n\3\3\4\3\4\3\4\7\4D\n\4"+
+		"\f\4\16\4G\13\4\3\4\3\4\6\4K\n\4\r\4\16\4L\3\5\6\5P\n\5\r\5\16\5Q\3\6"+
+		"\3\6\3\6\7\6W\n\6\f\6\16\6Z\13\6\3\6\3\6\6\6^\n\6\r\6\16\6_\3\7\3\7\3"+
+		"\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b"+
+		"u\n\b\3\t\3\t\3\n\6\nz\n\n\r\n\16\n{\3\13\3\13\3\13\3\13\5\13\u0082\n"+
+		"\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\17\2\2\20\2\4\6\b\n\f\16\20"+
+		"\22\24\26\30\32\34\2\3\3\2 #\2\u0094\2#\3\2\2\2\4>\3\2\2\2\6J\3\2\2\2"+
+		"\bO\3\2\2\2\n]\3\2\2\2\fa\3\2\2\2\16t\3\2\2\2\20v\3\2\2\2\22y\3\2\2\2"+
+		"\24\u0081\3\2\2\2\26\u0083\3\2\2\2\30\u0085\3\2\2\2\32\u0087\3\2\2\2\34"+
+		"\u0089\3\2\2\2\36\37\7\27\2\2\37!\7\36\2\2 \"\7$\2\2! \3\2\2\2!\"\3\2"+
+		"\2\2\"$\3\2\2\2#\36\3\2\2\2#$\3\2\2\2$(\3\2\2\2%\'\5\4\3\2&%\3\2\2\2\'"+
+		"*\3\2\2\2(&\3\2\2\2()\3\2\2\2)+\3\2\2\2*(\3\2\2\2+,\7\25\2\2,-\5\22\n"+
+		"\2-.\7\26\2\2.\3\3\2\2\2/\60\7\3\2\2\60\62\5\6\4\2\61\63\7$\2\2\62\61"+
+		"\3\2\2\2\62\63\3\2\2\2\63?\3\2\2\2\64\65\7\4\2\2\65\67\5\b\5\2\668\7$"+
+		"\2\2\67\66\3\2\2\2\678\3\2\2\28?\3\2\2\29:\7\5\2\2:<\5\n\6\2;=\7$\2\2"+
+		"<;\3\2\2\2<=\3\2\2\2=?\3\2\2\2>/\3\2\2\2>\64\3\2\2\2>9\3\2\2\2?\5\3\2"+
+		"\2\2@E\7\36\2\2AB\7\6\2\2BD\7\36\2\2CA\3\2\2\2DG\3\2\2\2EC\3\2\2\2EF\3"+
+		"\2\2\2FH\3\2\2\2GE\3\2\2\2HI\7\7\2\2IK\5\20\t\2J@\3\2\2\2KL\3\2\2\2LJ"+
+		"\3\2\2\2LM\3\2\2\2M\7\3\2\2\2NP\5\f\7\2ON\3\2\2\2PQ\3\2\2\2QO\3\2\2\2"+
+		"QR\3\2\2\2R\t\3\2\2\2SX\7\36\2\2TU\7\6\2\2UW\7\36\2\2VT\3\2\2\2WZ\3\2"+
+		"\2\2XV\3\2\2\2XY\3\2\2\2Y[\3\2\2\2ZX\3\2\2\2[\\\7\b\2\2\\^\5\16\b\2]S"+
+		"\3\2\2\2^_\3\2\2\2_]\3\2\2\2_`\3\2\2\2`\13\3\2\2\2ab\7\36\2\2bc\7\b\2"+
+		"\2cd\5\16\b\2d\r\3\2\2\2eu\7\t\2\2fu\7\n\2\2gu\7\13\2\2hu\7\36\2\2ij\7"+
+		"\f\2\2jk\7\32\2\2kl\7\31\2\2lu\5\16\b\2mn\7\r\2\2no\7\32\2\2op\7\33\2"+
+		"\2pu\5\16\b\2qr\7\16\2\2rs\7\34\2\2su\7\35\2\2te\3\2\2\2tf\3\2\2\2tg\3"+
+		"\2\2\2th\3\2\2\2ti\3\2\2\2tm\3\2\2\2tq\3\2\2\2u\17\3\2\2\2vw\t\2\2\2w"+
+		"\21\3\2\2\2xz\5\24\13\2yx\3\2\2\2z{\3\2\2\2{y\3\2\2\2{|\3\2\2\2|\23\3"+
+		"\2\2\2}\u0082\5\26\f\2~\u0082\5\30\r\2\177\u0082\5\32\16\2\u0080\u0082"+
+		"\5\34\17\2\u0081}\3\2\2\2\u0081~\3\2\2\2\u0081\177\3\2\2\2\u0081\u0080"+
+		"\3\2\2\2\u0082\25\3\2\2\2\u0083\u0084\7\17\2\2\u0084\27\3\2\2\2\u0085"+
+		"\u0086\7\20\2\2\u0086\31\3\2\2\2\u0087\u0088\7\21\2\2\u0088\33\3\2\2\2"+
+		"\u0089\u008a\7\22\2\2\u008a\35\3\2\2\2\21!#(\62\67<>ELQX_t{\u0081";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
