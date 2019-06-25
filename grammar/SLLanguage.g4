@@ -28,7 +28,7 @@ whileSentence: 'mientras' PIZQ expression PDER LIZQ body LDER;
 doWhileSentence: 'repetir' body 'hasta' PIZQ expression PDER ;
 repeatSentence: 'desde' assignationSentence 'hasta' expression  ('paso' expression)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
-readSentence: 'leer' PIZQ expression (COMA expression)* PDER SMCOLON?;
+readSentence: 'leer' PIZQ ID (COMA ID)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ (SINO sentence)? LDER;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (('and' | 'or' )expression)? ;
