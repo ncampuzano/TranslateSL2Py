@@ -1,5 +1,13 @@
-var
-  notas : vector [MAX_ALUMNOS] numerico
+const
+  PI = 3.14
 inicio
-    a=5
+    si(f < 3){
+    imprimir("a=5","a=3")
+    sino si (f>4 and f<3.5)
+    imprimir("a=4")
+    sino si (f>5)
+    imprimir("a=7")
+    sino
+    imprimir("a=8")
+    }
 fin

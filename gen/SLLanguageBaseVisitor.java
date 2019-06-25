@@ -86,14 +86,21 @@ public class SLLanguageBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIfSentence(SLLanguageParser.IfSentenceContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSinoSentence(SLLanguageParser.SinoSentenceContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitIfSentence(SLLanguageParser.IfSentenceContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

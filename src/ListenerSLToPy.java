@@ -16,15 +16,16 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override
     public void enterSentence(SLLanguageParser.SentenceContext ctx){
+        System.out.println();
         for(int i = 0; i < amountOfTabsStartOfSentence; i++) {
             System.out.print("\t");
         }
     }
 
-    @Override
+    /*@Override
     public void exitSentence(SLLanguageParser.SentenceContext ctx){
         System.out.println();
-    }
+    }*/
 
     @Override
     public void enterConstant(SLLanguageParser.ConstantContext ctx) {
@@ -54,10 +55,57 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
         System.out.print(")");
     }
+    @Override
+    public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx){
+        System.out.print("if ");
+    }
+    @Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) {
+        System.out.print(":");
+        amountOfTabsStartOfSentence++;
+    }
+    @Override public void exitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) {
+        amountOfTabsStartOfSentence--;
+    }
+    @Override public void enterSinoSentence(SLLanguageParser.SinoSentenceContext ctx) {
+        System.out.println();
+        amountOfTabsStartOfSentence--;
+        for (int i = 0; i < amountOfTabsStartOfSentence; i++) {
+            System.out.print("\t");
+        }
+        if(ctx.ifSentence()!=null) {
+            System.out.print("el");
+        }
+        else{
+            System.out.print("else");
+        }
+        amountOfTabsStartOfSentence++;
+    }
+
+
     @Override public void visitTerminal(TerminalNode node) {
         //System.out.println("visiting node: " + node.toString());
-        if(node.toString().equals(",")){
-            System.out.print(node.toString());
+        String wordToPrint = node.toString();
+        if(wordToPrint.equals(",")
+                || wordToPrint.equals("<")
+                || wordToPrint.equals(">")
+                || wordToPrint.equals(">=")
+                || wordToPrint.equals("<=")
+                || wordToPrint.equals("==")
+                || wordToPrint.equals("*")
+                || wordToPrint.equals("/")
+                || wordToPrint.equals("+")
+                || wordToPrint.equals("-")
+                || wordToPrint.equals("%")
+                || wordToPrint.equals("^")
+        ){
+            System.out.print(wordToPrint);
+        }
+        if(wordToPrint.equals("and")
+                || wordToPrint.equals("or")
+                || wordToPrint.equals("TRUE")
+                || wordToPrint.equals("FALSE")){
+            System.out.print(" "+wordToPrint + " ");
+
         }
     }
 

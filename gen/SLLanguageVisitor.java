@@ -70,17 +70,23 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSentence(SLLanguageParser.SentenceContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SLLanguageParser#ifSentence}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIfSentence(SLLanguageParser.IfSentenceContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#sinoSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSinoSentence(SLLanguageParser.SinoSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#ifSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfSentence(SLLanguageParser.IfSentenceContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#whileSentence}.
 	 * @param ctx the parse tree

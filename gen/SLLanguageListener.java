@@ -107,16 +107,6 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitSentence(SLLanguageParser.SentenceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SLLanguageParser#ifSentence}.
-	 * @param ctx the parse tree
-	 */
-	void enterIfSentence(SLLanguageParser.IfSentenceContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SLLanguageParser#ifSentence}.
-	 * @param ctx the parse tree
-	 */
-	void exitIfSentence(SLLanguageParser.IfSentenceContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
 	 */
@@ -126,6 +116,26 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#sinoSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterSinoSentence(SLLanguageParser.SinoSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#sinoSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitSinoSentence(SLLanguageParser.SinoSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#ifSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfSentence(SLLanguageParser.IfSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#ifSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfSentence(SLLanguageParser.IfSentenceContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#whileSentence}.
 	 * @param ctx the parse tree

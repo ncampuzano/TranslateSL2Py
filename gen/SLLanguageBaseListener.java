@@ -135,18 +135,6 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIfSentence(SLLanguageParser.IfSentenceContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,6 +142,30 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSinoSentence(SLLanguageParser.SinoSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSinoSentence(SLLanguageParser.SinoSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfSentence(SLLanguageParser.IfSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

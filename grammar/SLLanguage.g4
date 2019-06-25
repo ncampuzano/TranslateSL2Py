@@ -16,9 +16,10 @@ sentence: ifSentence
           | readSentence
           | switchSentence
           | doWhileSentence
-          | expression;
+          ;
+bodyIfSentence: body (SINO sinoSentence)* ;
+sinoSentence : ifSentence | sentence ;
 ifSentence: 'si' PIZQ expressionBoolean PDER (LIZQ bodyIfSentence LDER | sentence);
-bodyIfSentence: body (SINO ifSentence | SINO sentence)?;
 whileSentence: 'mientras' PIZQ expression PDER LIZQ body LDER;
 doWhileSentence: 'repetir' body 'hasta' PIZQ expression PDER ;
 repeatSentence: 'desde' expression 'hasta' expression  ('paso' expression)? LIZQ body LDER;
@@ -26,7 +27,7 @@ printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
 readSentence: 'leer' PIZQ expression (COMA expression)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ (SINO expression)? LDER;
 caseSentence: 'caso' PIZQ expressionBoolean PDER expression*;
-expressionBoolean: expression ('and' | 'or' expression)? ;
+expressionBoolean: expression (('and' | 'or' )expression)? ;
 expression:  expression OPERADOR expression SMCOLON?
             | PIZQ expression+ PDER
             | ID '=' expression SMCOLON?
@@ -34,8 +35,8 @@ expression:  expression OPERADOR expression SMCOLON?
             | BIZQ expression BDER
             | constant
             ;
-constant: NUM | CADENA | BOOL | DOUBLE | ID | CALLFUNCTION;
 
+SINO            : 'sino';
 MULTOP          : '*';
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
@@ -48,7 +49,7 @@ BIZQ            : '[';
 BDER            : ']';
 LIZQ            : '{';
 LDER            : '}';
-ID              : '-'?[a-zA-Z][a-zA-Z0-9_]* ;
+ID              : [a-zA-Z][a-zA-Z0-9_]* ;
 ESP             : [ \t\r\n]+ -> skip ;
 NUM             : '-'?[0-9]+ ;
 DOUBLE          : '-'?[0-9]+( | [.][0-9]+) ;
@@ -58,4 +59,4 @@ SMCOLON         : ';' ;
 COMA            : ',' ;
 OPERADOR        : ( '*' | '/' | '+' | '-' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
 ROP		        : 'and' | 'or';
-SINO            : 'sino';
+constant: NUM | CADENA | BOOL | DOUBLE | ID | CALLFUNCTION;
