@@ -18,10 +18,10 @@ public class SLLanguageParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, SINO=24, MULTOP=25, 
-		COMMENT=26, LINE_COMMENT=27, INICIO=28, FIN=29, PROGRAMA=30, PIZQ=31, 
-		PDER=32, BIZQ=33, BDER=34, LIZQ=35, LDER=36, ID=37, ESP=38, NUM=39, DOUBLE=40, 
-		BOOL=41, CADENA=42, SMCOLON=43, COMA=44, OPERADOR=45, ROP=46, CALLFUNCTION=47;
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, SINO=24, COMMENT=25, 
+		LINE_COMMENT=26, INICIO=27, FIN=28, PROGRAMA=29, PIZQ=30, PDER=31, BIZQ=32, 
+		BDER=33, LIZQ=34, LDER=35, NUM=36, DOUBLE=37, BOOL=38, CADENA=39, VECTOR=40, 
+		ID=41, ESP=42, SMCOLON=43, COMA=44, OPERADOR=45, ROP=46, CALLTOFUNCTION=47;
 	public static final int
 		RULE_s = 0, RULE_settings = 1, RULE_assignationConst = 2, RULE_assignationTypes = 3, 
 		RULE_assignationVar = 4, RULE_objeto = 5, RULE_tipo = 6, RULE_tipoVector = 7, 
@@ -46,9 +46,9 @@ public class SLLanguageParser extends Parser {
 			null, "'const'", "'tipos'", "'var'", "'='", "':'", "'vector'", "'matriz'", 
 			"'registro'", "'numerico'", "'cadena'", "'logico'", "'si'", "'mientras'", 
 			"'repetir'", "'hasta'", "'desde'", "'paso'", "'imprimir'", "'leer'", 
-			"'eval'", "'caso'", "'and'", "'or'", "'sino'", "'*'", null, null, "'inicio'", 
+			"'eval'", "'caso'", "'and'", "'or'", "'sino'", null, null, "'inicio'", 
 			"'fin'", "'programa'", "'('", "')'", "'['", "']'", "'{'", "'}'", null, 
-			null, null, null, null, null, "';'", "','"
+			null, null, null, null, null, null, "';'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -56,9 +56,9 @@ public class SLLanguageParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			"SINO", "MULTOP", "COMMENT", "LINE_COMMENT", "INICIO", "FIN", "PROGRAMA", 
-			"PIZQ", "PDER", "BIZQ", "BDER", "LIZQ", "LDER", "ID", "ESP", "NUM", "DOUBLE", 
-			"BOOL", "CADENA", "SMCOLON", "COMA", "OPERADOR", "ROP", "CALLFUNCTION"
+			"SINO", "COMMENT", "LINE_COMMENT", "INICIO", "FIN", "PROGRAMA", "PIZQ", 
+			"PDER", "BIZQ", "BDER", "LIZQ", "LDER", "NUM", "DOUBLE", "BOOL", "CADENA", 
+			"VECTOR", "ID", "ESP", "SMCOLON", "COMA", "OPERADOR", "ROP", "CALLTOFUNCTION"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -731,7 +731,7 @@ public class SLLanguageParser extends Parser {
 	}
 
 	public static class TipoVectorContext extends ParserRuleContext {
-		public TerminalNode MULTOP() { return getToken(SLLanguageParser.MULTOP, 0); }
+		public TerminalNode OPERADOR() { return getToken(SLLanguageParser.OPERADOR, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -773,29 +773,19 @@ public class SLLanguageParser extends Parser {
 			{
 			setState(144);
 			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case MULTOP:
+			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
+			case 1:
 				{
 				setState(142);
-				match(MULTOP);
+				match(OPERADOR);
 				}
 				break;
-			case PIZQ:
-			case BIZQ:
-			case ID:
-			case NUM:
-			case DOUBLE:
-			case BOOL:
-			case CADENA:
-			case OPERADOR:
-			case CALLFUNCTION:
+			case 2:
 				{
 				setState(143);
 				expression(0);
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 			setState(150);
 			_errHandler.sync(this);
@@ -1677,8 +1667,8 @@ public class SLLanguageParser extends Parser {
 			return getRuleContext(CaseSentenceContext.class,i);
 		}
 		public TerminalNode SINO() { return getToken(SLLanguageParser.SINO, 0); }
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+		public SentenceContext sentence() {
+			return getRuleContext(SentenceContext.class,0);
 		}
 		public SwitchSentenceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1732,7 +1722,7 @@ public class SLLanguageParser extends Parser {
 				setState(259);
 				match(SINO);
 				setState(260);
-				expression(0);
+				sentence();
 				}
 			}
 
@@ -1757,11 +1747,11 @@ public class SLLanguageParser extends Parser {
 			return getRuleContext(ExpressionBooleanContext.class,0);
 		}
 		public TerminalNode PDER() { return getToken(SLLanguageParser.PDER, 0); }
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
+		public List<SentenceContext> sentence() {
+			return getRuleContexts(SentenceContext.class);
 		}
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+		public SentenceContext sentence(int i) {
+			return getRuleContext(SentenceContext.class,i);
 		}
 		public CaseSentenceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1800,11 +1790,11 @@ public class SLLanguageParser extends Parser {
 			setState(272);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << ID) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << OPERADOR) | (1L << CALLFUNCTION))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__15) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << ID))) != 0)) {
 				{
 				{
 				setState(269);
-				expression(0);
+				sentence();
 				}
 				}
 				setState(274);
@@ -1963,7 +1953,7 @@ public class SLLanguageParser extends Parser {
 					setState(285); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << ID) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << OPERADOR) | (1L << CALLFUNCTION))) != 0) );
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << VECTOR) | (1L << ID) | (1L << OPERADOR) | (1L << CALLTOFUNCTION))) != 0) );
 				setState(287);
 				match(PDER);
 				}
@@ -1986,12 +1976,13 @@ public class SLLanguageParser extends Parser {
 				match(BDER);
 				}
 				break;
-			case ID:
 			case NUM:
 			case DOUBLE:
 			case BOOL:
 			case CADENA:
-			case CALLFUNCTION:
+			case VECTOR:
+			case ID:
+			case CALLTOFUNCTION:
 				{
 				setState(295);
 				constant();
@@ -2054,7 +2045,8 @@ public class SLLanguageParser extends Parser {
 		public TerminalNode BOOL() { return getToken(SLLanguageParser.BOOL, 0); }
 		public TerminalNode DOUBLE() { return getToken(SLLanguageParser.DOUBLE, 0); }
 		public TerminalNode ID() { return getToken(SLLanguageParser.ID, 0); }
-		public TerminalNode CALLFUNCTION() { return getToken(SLLanguageParser.CALLFUNCTION, 0); }
+		public TerminalNode VECTOR() { return getToken(SLLanguageParser.VECTOR, 0); }
+		public TerminalNode CALLTOFUNCTION() { return getToken(SLLanguageParser.CALLTOFUNCTION, 0); }
 		public ConstantContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2083,7 +2075,7 @@ public class SLLanguageParser extends Parser {
 			{
 			setState(309);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ID) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << CALLFUNCTION))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << VECTOR) | (1L << ID) | (1L << CALLTOFUNCTION))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -2145,32 +2137,32 @@ public class SLLanguageParser extends Parser {
 		"\30\16\30\u011f\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u012b"+
 		"\n\30\3\30\3\30\3\30\3\30\5\30\u0131\n\30\7\30\u0133\n\30\f\30\16\30\u0136"+
 		"\13\30\3\31\3\31\3\31\2\3.\32\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 "+
-		"\"$&(*,.\60\2\4\3\2\30\31\5\2\'\'),\61\61\2\u0151\2\67\3\2\2\2\4R\3\2"+
-		"\2\2\6^\3\2\2\2\bc\3\2\2\2\nq\3\2\2\2\fu\3\2\2\2\16\u008e\3\2\2\2\20\u0092"+
+		"\"$&(*,.\60\2\4\3\2\30\31\4\2&+\61\61\2\u0151\2\67\3\2\2\2\4R\3\2\2\2"+
+		"\6^\3\2\2\2\bc\3\2\2\2\nq\3\2\2\2\fu\3\2\2\2\16\u008e\3\2\2\2\20\u0092"+
 		"\3\2\2\2\22\u009c\3\2\2\2\24\u00a8\3\2\2\2\26\u00aa\3\2\2\2\30\u00b0\3"+
 		"\2\2\2\32\u00ba\3\2\2\2\34\u00bc\3\2\2\2\36\u00c7\3\2\2\2 \u00cf\3\2\2"+
 		"\2\"\u00d6\3\2\2\2$\u00e2\3\2\2\2&\u00f0\3\2\2\2(\u00fe\3\2\2\2*\u010b"+
-		"\3\2\2\2,\u0115\3\2\2\2.\u012a\3\2\2\2\60\u0137\3\2\2\2\62\63\7 \2\2\63"+
-		"\65\7\'\2\2\64\66\7-\2\2\65\64\3\2\2\2\65\66\3\2\2\2\668\3\2\2\2\67\62"+
-		"\3\2\2\2\678\3\2\2\28<\3\2\2\29;\5\4\3\2:9\3\2\2\2;>\3\2\2\2<:\3\2\2\2"+
-		"<=\3\2\2\2=?\3\2\2\2><\3\2\2\2?@\7\36\2\2@A\5\22\n\2AB\7\37\2\2B\3\3\2"+
-		"\2\2CD\7\3\2\2DF\5\6\4\2EG\7-\2\2FE\3\2\2\2FG\3\2\2\2GS\3\2\2\2HI\7\4"+
-		"\2\2IK\5\b\5\2JL\7-\2\2KJ\3\2\2\2KL\3\2\2\2LS\3\2\2\2MN\7\5\2\2NP\5\n"+
-		"\6\2OQ\7-\2\2PO\3\2\2\2PQ\3\2\2\2QS\3\2\2\2RC\3\2\2\2RH\3\2\2\2RM\3\2"+
-		"\2\2S\5\3\2\2\2TY\7\'\2\2UV\7.\2\2VX\7\'\2\2WU\3\2\2\2X[\3\2\2\2YW\3\2"+
-		"\2\2YZ\3\2\2\2Z\\\3\2\2\2[Y\3\2\2\2\\]\7\6\2\2]_\5.\30\2^T\3\2\2\2_`\3"+
-		"\2\2\2`^\3\2\2\2`a\3\2\2\2a\7\3\2\2\2bd\5\f\7\2cb\3\2\2\2de\3\2\2\2ec"+
-		"\3\2\2\2ef\3\2\2\2f\t\3\2\2\2gl\7\'\2\2hi\7.\2\2ik\7\'\2\2jh\3\2\2\2k"+
+		"\3\2\2\2,\u0115\3\2\2\2.\u012a\3\2\2\2\60\u0137\3\2\2\2\62\63\7\37\2\2"+
+		"\63\65\7+\2\2\64\66\7-\2\2\65\64\3\2\2\2\65\66\3\2\2\2\668\3\2\2\2\67"+
+		"\62\3\2\2\2\678\3\2\2\28<\3\2\2\29;\5\4\3\2:9\3\2\2\2;>\3\2\2\2<:\3\2"+
+		"\2\2<=\3\2\2\2=?\3\2\2\2><\3\2\2\2?@\7\35\2\2@A\5\22\n\2AB\7\36\2\2B\3"+
+		"\3\2\2\2CD\7\3\2\2DF\5\6\4\2EG\7-\2\2FE\3\2\2\2FG\3\2\2\2GS\3\2\2\2HI"+
+		"\7\4\2\2IK\5\b\5\2JL\7-\2\2KJ\3\2\2\2KL\3\2\2\2LS\3\2\2\2MN\7\5\2\2NP"+
+		"\5\n\6\2OQ\7-\2\2PO\3\2\2\2PQ\3\2\2\2QS\3\2\2\2RC\3\2\2\2RH\3\2\2\2RM"+
+		"\3\2\2\2S\5\3\2\2\2TY\7+\2\2UV\7.\2\2VX\7+\2\2WU\3\2\2\2X[\3\2\2\2YW\3"+
+		"\2\2\2YZ\3\2\2\2Z\\\3\2\2\2[Y\3\2\2\2\\]\7\6\2\2]_\5.\30\2^T\3\2\2\2_"+
+		"`\3\2\2\2`^\3\2\2\2`a\3\2\2\2a\7\3\2\2\2bd\5\f\7\2cb\3\2\2\2de\3\2\2\2"+
+		"ec\3\2\2\2ef\3\2\2\2f\t\3\2\2\2gl\7+\2\2hi\7.\2\2ik\7+\2\2jh\3\2\2\2k"+
 		"n\3\2\2\2lj\3\2\2\2lm\3\2\2\2mo\3\2\2\2nl\3\2\2\2op\7\7\2\2pr\5\16\b\2"+
-		"qg\3\2\2\2rs\3\2\2\2sq\3\2\2\2st\3\2\2\2t\13\3\2\2\2uv\7\'\2\2vw\7\7\2"+
-		"\2wx\5\16\b\2x\r\3\2\2\2yz\7\b\2\2z{\7#\2\2{|\5\20\t\2|}\7$\2\2}~\5\16"+
-		"\b\2~\u008f\3\2\2\2\177\u0080\7\t\2\2\u0080\u0081\7#\2\2\u0081\u0082\5"+
-		"\20\t\2\u0082\u0083\7$\2\2\u0083\u0084\5\16\b\2\u0084\u008f\3\2\2\2\u0085"+
-		"\u0086\7\n\2\2\u0086\u0087\7%\2\2\u0087\u0088\5\n\6\2\u0088\u0089\7&\2"+
-		"\2\u0089\u008f\3\2\2\2\u008a\u008f\7\13\2\2\u008b\u008f\7\f\2\2\u008c"+
-		"\u008f\7\r\2\2\u008d\u008f\7\'\2\2\u008ey\3\2\2\2\u008e\177\3\2\2\2\u008e"+
+		"qg\3\2\2\2rs\3\2\2\2sq\3\2\2\2st\3\2\2\2t\13\3\2\2\2uv\7+\2\2vw\7\7\2"+
+		"\2wx\5\16\b\2x\r\3\2\2\2yz\7\b\2\2z{\7\"\2\2{|\5\20\t\2|}\7#\2\2}~\5\16"+
+		"\b\2~\u008f\3\2\2\2\177\u0080\7\t\2\2\u0080\u0081\7\"\2\2\u0081\u0082"+
+		"\5\20\t\2\u0082\u0083\7#\2\2\u0083\u0084\5\16\b\2\u0084\u008f\3\2\2\2"+
+		"\u0085\u0086\7\n\2\2\u0086\u0087\7$\2\2\u0087\u0088\5\n\6\2\u0088\u0089"+
+		"\7%\2\2\u0089\u008f\3\2\2\2\u008a\u008f\7\13\2\2\u008b\u008f\7\f\2\2\u008c"+
+		"\u008f\7\r\2\2\u008d\u008f\7+\2\2\u008ey\3\2\2\2\u008e\177\3\2\2\2\u008e"+
 		"\u0085\3\2\2\2\u008e\u008a\3\2\2\2\u008e\u008b\3\2\2\2\u008e\u008c\3\2"+
-		"\2\2\u008e\u008d\3\2\2\2\u008f\17\3\2\2\2\u0090\u0093\7\33\2\2\u0091\u0093"+
+		"\2\2\u008e\u008d\3\2\2\2\u008f\17\3\2\2\2\u0090\u0093\7/\2\2\u0091\u0093"+
 		"\5.\30\2\u0092\u0090\3\2\2\2\u0092\u0091\3\2\2\2\u0093\u0098\3\2\2\2\u0094"+
 		"\u0095\7.\2\2\u0095\u0097\5\20\t\2\u0096\u0094\3\2\2\2\u0097\u009a\3\2"+
 		"\2\2\u0098\u0096\3\2\2\2\u0098\u0099\3\2\2\2\u0099\21\3\2\2\2\u009a\u0098"+
@@ -2180,48 +2172,48 @@ public class SLLanguageParser extends Parser {
 		"\2\u00a4\u00a9\5&\24\2\u00a5\u00a9\5(\25\2\u00a6\u00a9\5 \21\2\u00a7\u00a9"+
 		"\5\26\f\2\u00a8\u00a0\3\2\2\2\u00a8\u00a1\3\2\2\2\u00a8\u00a2\3\2\2\2"+
 		"\u00a8\u00a3\3\2\2\2\u00a8\u00a4\3\2\2\2\u00a8\u00a5\3\2\2\2\u00a8\u00a6"+
-		"\3\2\2\2\u00a8\u00a7\3\2\2\2\u00a9\25\3\2\2\2\u00aa\u00ab\7\'\2\2\u00ab"+
+		"\3\2\2\2\u00a8\u00a7\3\2\2\2\u00a9\25\3\2\2\2\u00aa\u00ab\7+\2\2\u00ab"+
 		"\u00ac\7\6\2\2\u00ac\u00ae\5.\30\2\u00ad\u00af\7-\2\2\u00ae\u00ad\3\2"+
 		"\2\2\u00ae\u00af\3\2\2\2\u00af\27\3\2\2\2\u00b0\u00b5\5\22\n\2\u00b1\u00b2"+
 		"\7\32\2\2\u00b2\u00b4\5\32\16\2\u00b3\u00b1\3\2\2\2\u00b4\u00b7\3\2\2"+
 		"\2\u00b5\u00b3\3\2\2\2\u00b5\u00b6\3\2\2\2\u00b6\31\3\2\2\2\u00b7\u00b5"+
 		"\3\2\2\2\u00b8\u00bb\5\34\17\2\u00b9\u00bb\5\24\13\2\u00ba\u00b8\3\2\2"+
 		"\2\u00ba\u00b9\3\2\2\2\u00bb\33\3\2\2\2\u00bc\u00bd\7\16\2\2\u00bd\u00be"+
-		"\7!\2\2\u00be\u00bf\5,\27\2\u00bf\u00c5\7\"\2\2\u00c0\u00c1\7%\2\2\u00c1"+
-		"\u00c2\5\30\r\2\u00c2\u00c3\7&\2\2\u00c3\u00c6\3\2\2\2\u00c4\u00c6\5\24"+
+		"\7 \2\2\u00be\u00bf\5,\27\2\u00bf\u00c5\7!\2\2\u00c0\u00c1\7$\2\2\u00c1"+
+		"\u00c2\5\30\r\2\u00c2\u00c3\7%\2\2\u00c3\u00c6\3\2\2\2\u00c4\u00c6\5\24"+
 		"\13\2\u00c5\u00c0\3\2\2\2\u00c5\u00c4\3\2\2\2\u00c6\35\3\2\2\2\u00c7\u00c8"+
-		"\7\17\2\2\u00c8\u00c9\7!\2\2\u00c9\u00ca\5.\30\2\u00ca\u00cb\7\"\2\2\u00cb"+
-		"\u00cc\7%\2\2\u00cc\u00cd\5\22\n\2\u00cd\u00ce\7&\2\2\u00ce\37\3\2\2\2"+
+		"\7\17\2\2\u00c8\u00c9\7 \2\2\u00c9\u00ca\5.\30\2\u00ca\u00cb\7!\2\2\u00cb"+
+		"\u00cc\7$\2\2\u00cc\u00cd\5\22\n\2\u00cd\u00ce\7%\2\2\u00ce\37\3\2\2\2"+
 		"\u00cf\u00d0\7\20\2\2\u00d0\u00d1\5\22\n\2\u00d1\u00d2\7\21\2\2\u00d2"+
-		"\u00d3\7!\2\2\u00d3\u00d4\5.\30\2\u00d4\u00d5\7\"\2\2\u00d5!\3\2\2\2\u00d6"+
+		"\u00d3\7 \2\2\u00d3\u00d4\5.\30\2\u00d4\u00d5\7!\2\2\u00d5!\3\2\2\2\u00d6"+
 		"\u00d7\7\22\2\2\u00d7\u00d8\5\26\f\2\u00d8\u00d9\7\21\2\2\u00d9\u00dc"+
 		"\5.\30\2\u00da\u00db\7\23\2\2\u00db\u00dd\5.\30\2\u00dc\u00da\3\2\2\2"+
-		"\u00dc\u00dd\3\2\2\2\u00dd\u00de\3\2\2\2\u00de\u00df\7%\2\2\u00df\u00e0"+
-		"\5\22\n\2\u00e0\u00e1\7&\2\2\u00e1#\3\2\2\2\u00e2\u00e3\7\24\2\2\u00e3"+
-		"\u00e4\7!\2\2\u00e4\u00e9\5.\30\2\u00e5\u00e6\7.\2\2\u00e6\u00e8\5.\30"+
+		"\u00dc\u00dd\3\2\2\2\u00dd\u00de\3\2\2\2\u00de\u00df\7$\2\2\u00df\u00e0"+
+		"\5\22\n\2\u00e0\u00e1\7%\2\2\u00e1#\3\2\2\2\u00e2\u00e3\7\24\2\2\u00e3"+
+		"\u00e4\7 \2\2\u00e4\u00e9\5.\30\2\u00e5\u00e6\7.\2\2\u00e6\u00e8\5.\30"+
 		"\2\u00e7\u00e5\3\2\2\2\u00e8\u00eb\3\2\2\2\u00e9\u00e7\3\2\2\2\u00e9\u00ea"+
-		"\3\2\2\2\u00ea\u00ec\3\2\2\2\u00eb\u00e9\3\2\2\2\u00ec\u00ee\7\"\2\2\u00ed"+
+		"\3\2\2\2\u00ea\u00ec\3\2\2\2\u00eb\u00e9\3\2\2\2\u00ec\u00ee\7!\2\2\u00ed"+
 		"\u00ef\7-\2\2\u00ee\u00ed\3\2\2\2\u00ee\u00ef\3\2\2\2\u00ef%\3\2\2\2\u00f0"+
-		"\u00f1\7\25\2\2\u00f1\u00f2\7!\2\2\u00f2\u00f7\5.\30\2\u00f3\u00f4\7."+
+		"\u00f1\7\25\2\2\u00f1\u00f2\7 \2\2\u00f2\u00f7\5.\30\2\u00f3\u00f4\7."+
 		"\2\2\u00f4\u00f6\5.\30\2\u00f5\u00f3\3\2\2\2\u00f6\u00f9\3\2\2\2\u00f7"+
 		"\u00f5\3\2\2\2\u00f7\u00f8\3\2\2\2\u00f8\u00fa\3\2\2\2\u00f9\u00f7\3\2"+
-		"\2\2\u00fa\u00fc\7\"\2\2\u00fb\u00fd\7-\2\2\u00fc\u00fb\3\2\2\2\u00fc"+
-		"\u00fd\3\2\2\2\u00fd\'\3\2\2\2\u00fe\u00ff\7\26\2\2\u00ff\u0101\7%\2\2"+
-		"\u0100\u0102\5*\26\2\u0101\u0100\3\2\2\2\u0102\u0103\3\2\2\2\u0103\u0101"+
-		"\3\2\2\2\u0103\u0104\3\2\2\2\u0104\u0107\3\2\2\2\u0105\u0106\7\32\2\2"+
-		"\u0106\u0108\5.\30\2\u0107\u0105\3\2\2\2\u0107\u0108\3\2\2\2\u0108\u0109"+
-		"\3\2\2\2\u0109\u010a\7&\2\2\u010a)\3\2\2\2\u010b\u010c\7\27\2\2\u010c"+
-		"\u010d\7!\2\2\u010d\u010e\5,\27\2\u010e\u0112\7\"\2\2\u010f\u0111\5.\30"+
-		"\2\u0110\u010f\3\2\2\2\u0111\u0114\3\2\2\2\u0112\u0110\3\2\2\2\u0112\u0113"+
-		"\3\2\2\2\u0113+\3\2\2\2\u0114\u0112\3\2\2\2\u0115\u0118\5.\30\2\u0116"+
-		"\u0117\t\2\2\2\u0117\u0119\5.\30\2\u0118\u0116\3\2\2\2\u0118\u0119\3\2"+
-		"\2\2\u0119-\3\2\2\2\u011a\u011b\b\30\1\2\u011b\u011d\7!\2\2\u011c\u011e"+
-		"\5.\30\2\u011d\u011c\3\2\2\2\u011e\u011f\3\2\2\2\u011f\u011d\3\2\2\2\u011f"+
-		"\u0120\3\2\2\2\u0120\u0121\3\2\2\2\u0121\u0122\7\"\2\2\u0122\u012b\3\2"+
-		"\2\2\u0123\u0124\7/\2\2\u0124\u012b\5.\30\5\u0125\u0126\7#\2\2\u0126\u0127"+
-		"\5.\30\2\u0127\u0128\7$\2\2\u0128\u012b\3\2\2\2\u0129\u012b\5\60\31\2"+
-		"\u012a\u011a\3\2\2\2\u012a\u0123\3\2\2\2\u012a\u0125\3\2\2\2\u012a\u0129"+
-		"\3\2\2\2\u012b\u0134\3\2\2\2\u012c\u012d\f\7\2\2\u012d\u012e\7/\2\2\u012e"+
+		"\2\2\u00fa\u00fc\7!\2\2\u00fb\u00fd\7-\2\2\u00fc\u00fb\3\2\2\2\u00fc\u00fd"+
+		"\3\2\2\2\u00fd\'\3\2\2\2\u00fe\u00ff\7\26\2\2\u00ff\u0101\7$\2\2\u0100"+
+		"\u0102\5*\26\2\u0101\u0100\3\2\2\2\u0102\u0103\3\2\2\2\u0103\u0101\3\2"+
+		"\2\2\u0103\u0104\3\2\2\2\u0104\u0107\3\2\2\2\u0105\u0106\7\32\2\2\u0106"+
+		"\u0108\5\24\13\2\u0107\u0105\3\2\2\2\u0107\u0108\3\2\2\2\u0108\u0109\3"+
+		"\2\2\2\u0109\u010a\7%\2\2\u010a)\3\2\2\2\u010b\u010c\7\27\2\2\u010c\u010d"+
+		"\7 \2\2\u010d\u010e\5,\27\2\u010e\u0112\7!\2\2\u010f\u0111\5\24\13\2\u0110"+
+		"\u010f\3\2\2\2\u0111\u0114\3\2\2\2\u0112\u0110\3\2\2\2\u0112\u0113\3\2"+
+		"\2\2\u0113+\3\2\2\2\u0114\u0112\3\2\2\2\u0115\u0118\5.\30\2\u0116\u0117"+
+		"\t\2\2\2\u0117\u0119\5.\30\2\u0118\u0116\3\2\2\2\u0118\u0119\3\2\2\2\u0119"+
+		"-\3\2\2\2\u011a\u011b\b\30\1\2\u011b\u011d\7 \2\2\u011c\u011e\5.\30\2"+
+		"\u011d\u011c\3\2\2\2\u011e\u011f\3\2\2\2\u011f\u011d\3\2\2\2\u011f\u0120"+
+		"\3\2\2\2\u0120\u0121\3\2\2\2\u0121\u0122\7!\2\2\u0122\u012b\3\2\2\2\u0123"+
+		"\u0124\7/\2\2\u0124\u012b\5.\30\5\u0125\u0126\7\"\2\2\u0126\u0127\5.\30"+
+		"\2\u0127\u0128\7#\2\2\u0128\u012b\3\2\2\2\u0129\u012b\5\60\31\2\u012a"+
+		"\u011a\3\2\2\2\u012a\u0123\3\2\2\2\u012a\u0125\3\2\2\2\u012a\u0129\3\2"+
+		"\2\2\u012b\u0134\3\2\2\2\u012c\u012d\f\7\2\2\u012d\u012e\7/\2\2\u012e"+
 		"\u0130\5.\30\2\u012f\u0131\7-\2\2\u0130\u012f\3\2\2\2\u0130\u0131\3\2"+
 		"\2\2\u0131\u0133\3\2\2\2\u0132\u012c\3\2\2\2\u0133\u0136\3\2\2\2\u0134"+
 		"\u0132\3\2\2\2\u0134\u0135\3\2\2\2\u0135/\3\2\2\2\u0136\u0134\3\2\2\2"+
