@@ -2,13 +2,13 @@ grammar SLLanguage;
 
 s  : (PROGRAMA ID SMCOLON?)? settings* INICIO body FIN;
 settings: 'const' assignationConst SMCOLON? | 'tipos' assignationTypes SMCOLON? | 'var' assignationVar SMCOLON?;
-assignationConst: (ID (',' ID)* '=' expr)+;
+assignationConst: (ID (',' ID)* '=' expression)+;
 assignationTypes: objeto+;
 assignationVar: (ID (',' ID)* ':' tipo)+;
 objeto: ID ':' tipo;
 tipo: 'numerico' | 'cadena' | 'logico' | ID | 'vector' BIZQ tipoVector PDER tipo | 'matriz' BIZQ tipoVector BDER tipo | 'registro' LIZQ assignationVar LDER;
 tipoVector: expression (',' tipoVector)*;
-expr: '-'?NUM | CADENA | BOOL | '-'?DOUBLE | '-'?ID;
+constant: NUM | CADENA | BOOL | DOUBLE | ID;
 body: sentence+;
 sentence: ifSentence
           | repeatSentence
@@ -19,7 +19,7 @@ sentence: ifSentence
           | expression;
 ifSentence: 'si';
 repeatSentence: 'repetir' ;
-whileSentence: 'desde' expression 'hasta' expr  ('paso' expr)? LIZQ body LDER;
+whileSentence: 'desde' expression 'hasta' expression  ('paso' expression)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
 readSentence: 'leer' PIZQ ID (',' ID)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ ('sino' expression)? LDER;
@@ -30,7 +30,7 @@ expression:  expression OPERADOR expression SMCOLON?
             | ID '=' expression SMCOLON?
             | OPERADOR expression
             | BIZQ expression BDER
-            | expr
+            | constant
             ;
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
@@ -44,10 +44,10 @@ BIZQ            : '[';
 BDER            : ']';
 LIZQ            : '{';
 LDER            : '}';
-ID              : [a-zA-Z][a-zA-Z0-9_]* ;
+ID              : '-'?[a-zA-Z][a-zA-Z0-9_]* ;
 ESP             : [ \t\r\n]+ -> skip ;
-NUM             : [0-9]+ ;
-DOUBLE          : [0-9]+( | [.][0-9]+) ;
+NUM             : '-'?[0-9]+ ;
+DOUBLE          : '-'?[0-9]+( | [.][0-9]+) ;
 BOOL            : 'TRUE' | 'FALSE' | 'SI' | 'NO';
 CADENA          : ('"'[a-zA-Z0-9!"#$%&/()=?-_.\\ ]*'"' | '“'[a-zA-Z0-9!"#$%&/()=?-_.\\ ]*'”');
 SMCOLON         : ';' ;

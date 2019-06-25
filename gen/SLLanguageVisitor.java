@@ -52,11 +52,17 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTipo(SLLanguageParser.TipoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SLLanguageParser#expr}.
+	 * Visit a parse tree produced by {@link SLLanguageParser#tipoVector}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr(SLLanguageParser.ExprContext ctx);
+	T visitTipoVector(SLLanguageParser.TipoVectorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstant(SLLanguageParser.ConstantContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#body}.
 	 * @param ctx the parse tree
@@ -99,6 +105,24 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitReadSentence(SLLanguageParser.ReadSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#switchSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#caseSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCaseSentence(SLLanguageParser.CaseSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#expressionBoolean}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#expression}.
 	 * @param ctx the parse tree

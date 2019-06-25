@@ -77,15 +77,25 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitTipo(SLLanguageParser.TipoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SLLanguageParser#expr}.
+	 * Enter a parse tree produced by {@link SLLanguageParser#tipoVector}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(SLLanguageParser.ExprContext ctx);
+	void enterTipoVector(SLLanguageParser.TipoVectorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SLLanguageParser#expr}.
+	 * Exit a parse tree produced by {@link SLLanguageParser#tipoVector}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(SLLanguageParser.ExprContext ctx);
+	void exitTipoVector(SLLanguageParser.TipoVectorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(SLLanguageParser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(SLLanguageParser.ConstantContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#body}.
 	 * @param ctx the parse tree
@@ -156,6 +166,36 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#switchSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#switchSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#caseSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterCaseSentence(SLLanguageParser.CaseSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#caseSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitCaseSentence(SLLanguageParser.CaseSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#expressionBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#expressionBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#expression}.
 	 * @param ctx the parse tree
