@@ -50,6 +50,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     @Override
     public void enterPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
         System.out.print("print(");
+        //System.out.print();
     }
     @Override
     public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
@@ -80,6 +81,19 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         }
         amountOfTabsStartOfSentence++;
     }
+    @Override public void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx) {
+
+        System.out.print(ctx.ID(0).toString());
+        for(int i = 1; i <= ctx.ID().size()-1; i++){
+            System.out.print(ctx.ID(i).toString());
+        }
+        System.out.print(" = input()");
+
+        for(int i = 0; i < ctx.ID().size()-1; i++){
+            System.out.print(" , input()");
+        }
+    }
+
 
 
     @Override public void visitTerminal(TerminalNode node) {
