@@ -42,7 +42,7 @@ expression:  expression OPERADOR expression SMCOLON?
 constant: NUM | CADENA | BOOL | DOUBLE | id;
 id: ID (vector | functionParameters)?;
 vector: BIZQ expression (COMA expression)* BDER;
-functionParameters: PIZQ expression (COMA expression)* PDER;
+functionParameters: PIZQ expression? (COMA expression)* PDER;
 
 SINO            : 'sino';
 COMMENT 		: '/*' .*? '*/' -> skip ;

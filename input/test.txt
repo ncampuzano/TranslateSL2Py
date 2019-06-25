@@ -1,24 +1,47 @@
-programa uno
-/*
-Calcular e imprimir la suma de los números pares comprendidos entre 1 y
-un n dado.
-Las variables utilizadas son:
-    n : para almacenar el valor proveido por el usuario como tope.
-    suma : donde almacenamos el total calculado.
-    k : contador auxiliar para el ciclo.
-  AUTOR : Juan Segovia (jsegovia@cnc.una.py)
-*/
-
+tipos
+  PRODUCTO : registro
+           {
+             codigo : numerico
+             descrip : cadena
+             precio : numerico
+            }
 var
-  n, suma, k : numerico
+  monitor, teclado : PRODUCTO
+  lista_prod : vector [*] PRODUCTO
+  r : registro
+    {
+      nombre : cadena
+      fecha_nac : registro
+                {
+                   dia, mes, año : numerico
+                }
+      notas : vector [*] numerico
+    }
+  a : registro
+    {
+      x, y : numerico
+      v : vector [*] numerico
+    }
+  b : registro
+    {
+      m, n : numerico
+      c : vector [3] numerico
+    }
+  v : vector [100] registro
+    {
+      a, b : numerico
+    }
 inicio
-  imprimir ("\nSuma de numeros pares entre 1 y n.\nPor favor ",
-            "ingrese un valor para n: ")
-  leer (n)
-  suma = 0
-  desde k=2 hasta n paso 2  // Comentario ciclo desde ... hasta
-  {
-    suma = suma + k
-  }
-  imprimir ("\nLa suma es ", suma)
+  r = { "Carolina Gomez", // campo nombre
+        {12, 07, 1969}, // campo fecha
+        {87, 91, 99, 93} // 4 notas
+      }
+
+  r.fecha_nac.dia = 23
+  r.notas [2] = 98
+  b = { 10, 20, // corresponden a m y n respectivamente
+        {0, 0, 0} // vector c inicializado con ceros
+	  }
+  a = b
+  v[3].b = 35
 fin
