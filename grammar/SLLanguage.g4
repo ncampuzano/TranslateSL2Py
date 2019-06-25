@@ -6,24 +6,31 @@ assignationConst: (ID (',' ID)* '=' expr)+;
 assignationTypes: objeto+;
 assignationVar: (ID (',' ID)* ':' tipo)+;
 objeto: ID ':' tipo;
-tipo: 'numerico' | 'cadena' | 'logico' | ID | 'vector' BIZQ PDER tipo | 'matriz' BIZQ BDER tipo | 'registro' LIZQ LDER;
-expr: NUM | CADENA | BOOL | DOUBLE | ID;
+tipo: 'numerico' | 'cadena' | 'logico' | ID | 'vector' BIZQ tipoVector PDER tipo | 'matriz' BIZQ tipoVector BDER tipo | 'registro' LIZQ assignationVar LDER;
+tipoVector: expression (',' tipoVector)*;
+expr: '-'?NUM | CADENA | BOOL | '-'?DOUBLE | '-'?ID;
 body: sentence+;
 sentence: ifSentence
           | repeatSentence
           | whileSentence
           | printSentence
           | readSentence
+          | switchSentence
           | expression;
 ifSentence: 'si';
 repeatSentence: 'repetir' ;
 whileSentence: 'desde' expression 'hasta' expr  ('paso' expr)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
-readSentence: 'leer' PIZQ ID PDER SMCOLON?;
-expression: expr
-            | expression OPERADOR expression
-            | PIZQ expression PDER
-            | ID '=' expression
+readSentence: 'leer' PIZQ ID (',' ID)* PDER SMCOLON?;
+switchSentence: 'eval' LIZQ caseSentence+ ('sino' expression)? LDER;
+caseSentence: 'caso' PIZQ expressionBoolean PDER expression*;
+expressionBoolean: expression ('and' | 'or') expression;
+expression:  expression OPERADOR expression SMCOLON?
+            | PIZQ expression+ PDER
+            | ID '=' expression SMCOLON?
+            | OPERADOR expression
+            | BIZQ expression BDER
+            | expr
             ;
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
@@ -42,7 +49,8 @@ ESP             : [ \t\r\n]+ -> skip ;
 NUM             : [0-9]+ ;
 DOUBLE          : [0-9]+( | [.][0-9]+) ;
 BOOL            : 'TRUE' | 'FALSE' | 'SI' | 'NO';
-CADENA          : '"'[a-zA-Z0-9!"#$%&/()=?-_.\\ \n]* '"';
+CADENA          : ('"'[a-zA-Z0-9!"#$%&/()=?-_.\\ ]*'"' | '“'[a-zA-Z0-9!"#$%&/()=?-_.\\ ]*'”');
 SMCOLON         : ';' ;
 COMA            : ',';
-OPERADOR        : ( '*' | '/' | '+' | '-' );
+OPERADOR        : ( '*' | '/' | '+' | '-' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
+ROP		        : 'and' | 'or';
