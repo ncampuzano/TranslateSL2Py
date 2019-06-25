@@ -16,13 +16,15 @@ sentence: ifSentence
           | readSentence
           | switchSentence
           | doWhileSentence
+          | assignationSentence
           ;
+assignationSentence: ID '=' expression SMCOLON?;
 bodyIfSentence: body (SINO sinoSentence)* ;
 sinoSentence : ifSentence | sentence ;
 ifSentence: 'si' PIZQ expressionBoolean PDER (LIZQ bodyIfSentence LDER | sentence);
 whileSentence: 'mientras' PIZQ expression PDER LIZQ body LDER;
 doWhileSentence: 'repetir' body 'hasta' PIZQ expression PDER ;
-repeatSentence: 'desde' expression 'hasta' expression  ('paso' expression)? LIZQ body LDER;
+repeatSentence: 'desde' assignationSentence 'hasta' expression  ('paso' expression)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
 readSentence: 'leer' PIZQ expression (COMA expression)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ (SINO expression)? LDER;
@@ -30,7 +32,6 @@ caseSentence: 'caso' PIZQ expressionBoolean PDER expression*;
 expressionBoolean: expression (('and' | 'or' )expression)? ;
 expression:  expression OPERADOR expression SMCOLON?
             | PIZQ expression+ PDER
-            | ID '=' expression SMCOLON?
             | OPERADOR expression
             | BIZQ expression BDER
             | constant
@@ -59,4 +60,5 @@ SMCOLON         : ';' ;
 COMA            : ',' ;
 OPERADOR        : ( '*' | '/' | '+' | '-' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
 ROP		        : 'and' | 'or';
+
 constant: NUM | CADENA | BOOL | DOUBLE | ID | CALLFUNCTION;

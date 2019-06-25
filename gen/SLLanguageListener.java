@@ -1,4 +1,4 @@
-// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -106,6 +106,16 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSentence(SLLanguageParser.SentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#assignationSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#assignationSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree

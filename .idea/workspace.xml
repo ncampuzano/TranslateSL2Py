@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc2fd92-bd41-4df5-a53f-fb314f13332e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grammar/SLLanguage.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/SLLanguage.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguage.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguage.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguage.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguage.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguageLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguageLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguageLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TranslateSL2Py/SLLanguageLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListenerSLToPy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListenerSLToPy.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,48 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ListenerSLToPy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="101" column="9" lean-forward="true" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-              <folding>
-                <element signature="e#1726#1727#0" expanded="true" />
-                <element signature="e#1785#1786#0" expanded="true" />
-                <element signature="e#1822#1823#0" expanded="true" />
-                <element signature="e#1909#1910#0" expanded="true" />
-                <element signature="e#1948#1949#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/SLLanguageBaseListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="149" column="89" lean-forward="true" selection-start-line="149" selection-end-line="150" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/VisitorSLToPy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+            <state relative-caret-position="187">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -85,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="257">
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,11 +41,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/input/test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="21" column="3" lean-forward="true" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+            <state relative-caret-position="123">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -129,9 +85,9 @@
         <option value="$PROJECT_DIR$/input/test.text" />
         <option value="$PROJECT_DIR$/src/VisitorSLToPy.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/input/test.txt" />
-        <option value="$PROJECT_DIR$/grammar/SLLanguage.g4" />
         <option value="$PROJECT_DIR$/src/ListenerSLToPy.java" />
+        <option value="$PROJECT_DIR$/grammar/SLLanguage.g4" />
+        <option value="$PROJECT_DIR$/input/test.txt" />
       </list>
     </option>
   </component>
@@ -146,7 +102,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,6 +134,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,7 +197,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26172465" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -305,18 +261,11 @@
     <entry file="file://$PROJECT_DIR$/input/test.text" />
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state relative-caret-position="257">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -329,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        <state relative-caret-position="123">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
@@ -346,15 +295,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ListenerSLToPy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="101" column="9" lean-forward="true" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding>
-            <element signature="e#1726#1727#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1909#1910#0" expanded="true" />
-            <element signature="e#1948#1949#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="21" column="3" lean-forward="true" selection-end-line="24" />
         </state>
       </provider>
     </entry>

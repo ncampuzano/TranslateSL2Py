@@ -1,4 +1,4 @@
-// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -69,6 +69,12 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSentence(SLLanguageParser.SentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#assignationSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
