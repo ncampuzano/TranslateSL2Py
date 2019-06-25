@@ -21,7 +21,7 @@ public class SLLanguageParser extends Parser {
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, COMMENT=24, 
 		LINE_COMMENT=25, INICIO=26, FIN=27, PROGRAMA=28, PIZQ=29, PDER=30, BIZQ=31, 
 		BDER=32, LIZQ=33, LDER=34, ID=35, ESP=36, NUM=37, DOUBLE=38, BOOL=39, 
-		CADENA=40, SMCOLON=41, COMA=42, OPERADOR=43, ROP=44;
+		CADENA=40, SMCOLON=41, COMAMAS=42, COMA=43, OPERADOR=44, ROP=45;
 	public static final int
 		RULE_s = 0, RULE_settings = 1, RULE_assignationConst = 2, RULE_assignationTypes = 3, 
 		RULE_assignationVar = 4, RULE_objeto = 5, RULE_tipo = 6, RULE_tipoVector = 7, 
@@ -46,7 +46,7 @@ public class SLLanguageParser extends Parser {
 			"'desde'", "'hasta'", "'paso'", "'imprimir'", "'leer'", "'eval'", "'sino'", 
 			"'caso'", "'and'", "'or'", null, null, "'inicio'", "'fin'", "'programa'", 
 			"'('", "')'", "'['", "']'", "'{'", "'}'", null, null, null, null, null, 
-			null, "';'", "','"
+			null, "';'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -56,7 +56,7 @@ public class SLLanguageParser extends Parser {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			"COMMENT", "LINE_COMMENT", "INICIO", "FIN", "PROGRAMA", "PIZQ", "PDER", 
 			"BIZQ", "BDER", "LIZQ", "LDER", "ID", "ESP", "NUM", "DOUBLE", "BOOL", 
-			"CADENA", "SMCOLON", "COMA", "OPERADOR", "ROP"
+			"CADENA", "SMCOLON", "COMAMAS", "COMA", "OPERADOR", "ROP"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1204,9 +1204,9 @@ public class SLLanguageParser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public TerminalNode PDER() { return getToken(SLLanguageParser.PDER, 0); }
-		public List<TerminalNode> COMA() { return getTokens(SLLanguageParser.COMA); }
-		public TerminalNode COMA(int i) {
-			return getToken(SLLanguageParser.COMA, i);
+		public List<TerminalNode> COMAMAS() { return getTokens(SLLanguageParser.COMAMAS); }
+		public TerminalNode COMAMAS(int i) {
+			return getToken(SLLanguageParser.COMAMAS, i);
 		}
 		public TerminalNode SMCOLON() { return getToken(SLLanguageParser.SMCOLON, 0); }
 		public PrintSentenceContext(ParserRuleContext parent, int invokingState) {
@@ -1244,11 +1244,11 @@ public class SLLanguageParser extends Parser {
 			setState(181);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==COMA) {
+			while (_la==COMAMAS) {
 				{
 				{
 				setState(177);
-				match(COMA);
+				match(COMAMAS);
 				setState(178);
 				expression(0);
 				}
@@ -1769,7 +1769,7 @@ public class SLLanguageParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3.\u010b\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3/\u010b\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\3\2\3\2\5\2.\n\2\5\2\60\n\2\3\2\7\2"+
@@ -1801,11 +1801,11 @@ public class SLLanguageParser extends Parser {
 		"\34\2\289\5\24\13\29:\7\35\2\2:\3\3\2\2\2;<\7\3\2\2<>\5\6\4\2=?\7+\2\2"+
 		">=\3\2\2\2>?\3\2\2\2?K\3\2\2\2@A\7\4\2\2AC\5\b\5\2BD\7+\2\2CB\3\2\2\2"+
 		"CD\3\2\2\2DK\3\2\2\2EF\7\5\2\2FH\5\n\6\2GI\7+\2\2HG\3\2\2\2HI\3\2\2\2"+
-		"IK\3\2\2\2J;\3\2\2\2J@\3\2\2\2JE\3\2\2\2K\5\3\2\2\2LQ\7%\2\2MN\7,\2\2"+
+		"IK\3\2\2\2J;\3\2\2\2J@\3\2\2\2JE\3\2\2\2K\5\3\2\2\2LQ\7%\2\2MN\7-\2\2"+
 		"NP\7%\2\2OM\3\2\2\2PS\3\2\2\2QO\3\2\2\2QR\3\2\2\2RT\3\2\2\2SQ\3\2\2\2"+
 		"TU\7\6\2\2UW\5(\25\2VL\3\2\2\2WX\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y\7\3\2\2"+
 		"\2Z\\\5\f\7\2[Z\3\2\2\2\\]\3\2\2\2][\3\2\2\2]^\3\2\2\2^\t\3\2\2\2_d\7"+
-		"%\2\2`a\7,\2\2ac\7%\2\2b`\3\2\2\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2eg\3\2"+
+		"%\2\2`a\7-\2\2ac\7%\2\2b`\3\2\2\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2eg\3\2"+
 		"\2\2fd\3\2\2\2gh\7\7\2\2hj\5\16\b\2i_\3\2\2\2jk\3\2\2\2ki\3\2\2\2kl\3"+
 		"\2\2\2l\13\3\2\2\2mn\7%\2\2no\7\7\2\2op\5\16\b\2p\r\3\2\2\2q\u0087\7\b"+
 		"\2\2r\u0087\7\t\2\2s\u0087\7\n\2\2t\u0087\7%\2\2uv\7\13\2\2vw\7!\2\2w"+
@@ -1814,7 +1814,7 @@ public class SLLanguageParser extends Parser {
 		"\r\2\2\u0082\u0083\7#\2\2\u0083\u0084\5\n\6\2\u0084\u0085\7$\2\2\u0085"+
 		"\u0087\3\2\2\2\u0086q\3\2\2\2\u0086r\3\2\2\2\u0086s\3\2\2\2\u0086t\3\2"+
 		"\2\2\u0086u\3\2\2\2\u0086{\3\2\2\2\u0086\u0081\3\2\2\2\u0087\17\3\2\2"+
-		"\2\u0088\u008d\5(\25\2\u0089\u008a\7,\2\2\u008a\u008c\5\20\t\2\u008b\u0089"+
+		"\2\u0088\u008d\5(\25\2\u0089\u008a\7-\2\2\u008a\u008c\5\20\t\2\u008b\u0089"+
 		"\3\2\2\2\u008c\u008f\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008e\3\2\2\2\u008e"+
 		"\21\3\2\2\2\u008f\u008d\3\2\2\2\u0090\u0091\t\2\2\2\u0091\23\3\2\2\2\u0092"+
 		"\u0094\5\26\f\2\u0093\u0092\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u0093\3"+
@@ -1833,7 +1833,7 @@ public class SLLanguageParser extends Parser {
 		"\u00b8\3\2\2\2\u00b8\u00ba\3\2\2\2\u00b9\u00b7\3\2\2\2\u00ba\u00bc\7 "+
 		"\2\2\u00bb\u00bd\7+\2\2\u00bc\u00bb\3\2\2\2\u00bc\u00bd\3\2\2\2\u00bd"+
 		"\37\3\2\2\2\u00be\u00bf\7\24\2\2\u00bf\u00c0\7\37\2\2\u00c0\u00c5\7%\2"+
-		"\2\u00c1\u00c2\7,\2\2\u00c2\u00c4\7%\2\2\u00c3\u00c1\3\2\2\2\u00c4\u00c7"+
+		"\2\u00c1\u00c2\7-\2\2\u00c2\u00c4\7%\2\2\u00c3\u00c1\3\2\2\2\u00c4\u00c7"+
 		"\3\2\2\2\u00c5\u00c3\3\2\2\2\u00c5\u00c6\3\2\2\2\u00c6\u00c8\3\2\2\2\u00c7"+
 		"\u00c5\3\2\2\2\u00c8\u00ca\7 \2\2\u00c9\u00cb\7+\2\2\u00ca\u00c9\3\2\2"+
 		"\2\u00ca\u00cb\3\2\2\2\u00cb!\3\2\2\2\u00cc\u00cd\7\25\2\2\u00cd\u00cf"+
@@ -1849,11 +1849,11 @@ public class SLLanguageParser extends Parser {
 		"\u00ec\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\u00ee\3\2"+
 		"\2\2\u00ee\u00ef\7 \2\2\u00ef\u00fe\3\2\2\2\u00f0\u00f1\7%\2\2\u00f1\u00f2"+
 		"\7\6\2\2\u00f2\u00f4\5(\25\2\u00f3\u00f5\7+\2\2\u00f4\u00f3\3\2\2\2\u00f4"+
-		"\u00f5\3\2\2\2\u00f5\u00fe\3\2\2\2\u00f6\u00f7\7-\2\2\u00f7\u00fe\5(\25"+
+		"\u00f5\3\2\2\2\u00f5\u00fe\3\2\2\2\u00f6\u00f7\7.\2\2\u00f7\u00fe\5(\25"+
 		"\5\u00f8\u00f9\7!\2\2\u00f9\u00fa\5(\25\2\u00fa\u00fb\7\"\2\2\u00fb\u00fe"+
 		"\3\2\2\2\u00fc\u00fe\5\22\n\2\u00fd\u00e7\3\2\2\2\u00fd\u00f0\3\2\2\2"+
 		"\u00fd\u00f6\3\2\2\2\u00fd\u00f8\3\2\2\2\u00fd\u00fc\3\2\2\2\u00fe\u0107"+
-		"\3\2\2\2\u00ff\u0100\f\b\2\2\u0100\u0101\7-\2\2\u0101\u0103\5(\25\2\u0102"+
+		"\3\2\2\2\u00ff\u0100\f\b\2\2\u0100\u0101\7.\2\2\u0101\u0103\5(\25\2\u0102"+
 		"\u0104\7+\2\2\u0103\u0102\3\2\2\2\u0103\u0104\3\2\2\2\u0104\u0106\3\2"+
 		"\2\2\u0105\u00ff\3\2\2\2\u0106\u0109\3\2\2\2\u0107\u0105\3\2\2\2\u0107"+
 		"\u0108\3\2\2\2\u0108)\3\2\2\2\u0109\u0107\3\2\2\2\37-/\64>CHJQX]dk\u0086"+
