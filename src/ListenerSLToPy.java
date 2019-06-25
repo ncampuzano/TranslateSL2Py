@@ -1,4 +1,8 @@
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 public class ListenerSLToPy extends SLLanguageBaseListener {
+    public int amountOfTabsStartOfSentence = 0;
+
     @Override
     public void enterAssignationConst(SLLanguageParser.AssignationConstContext ctx){
         String value = ctx.ID().toString(); //Get the string of IDs
@@ -10,6 +14,18 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     public void exitAssignationConst(SLLanguageParser.AssignationConstContext ctx) {
         System.out.println();
     }
+    @Override
+    public void enterSentence(SLLanguageParser.SentenceContext ctx){
+        for(int i = 0; i < amountOfTabsStartOfSentence; i++) {
+            System.out.print("\t");
+        }
+    }
+
+    @Override
+    public void exitSentence(SLLanguageParser.SentenceContext ctx){
+        System.out.println();
+    }
+
     @Override
     public void enterConstant(SLLanguageParser.ConstantContext ctx) {
         String expr = "";
@@ -36,8 +52,15 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override
     public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
-        System.out.println(")");
+        System.out.print(")");
     }
+    @Override public void visitTerminal(TerminalNode node) {
+        //System.out.println("visiting node: " + node.toString());
+        if(node.toString().equals(",")){
+            System.out.print(node.toString());
+        }
+    }
+
 
 
 }

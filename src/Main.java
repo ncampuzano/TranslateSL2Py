@@ -16,13 +16,11 @@ public class Main {
             // Crear el objeto correspondiente al analizador sintáctico que se alimenta a partir del buffer de tokens
             SLLanguageParser parser = new SLLanguageParser(tokens);
             ParseTree tree = parser.s(); // Iniciar el analisis sintáctico en la regla inicial: r
-            /*
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new ListenerSLToPy(),tree);
             System.out.println();
-            */
-            VisitorSLToPy<Object> loader = new VisitorSLToPy<Object>();
-            loader.visit(tree);
+/*            VisitorSLToPy<Object> loader = new VisitorSLToPy<Object>();
+            loader.visit(tree);*/
 
 
             //System.out.println(tree.toStringTree(parser)); // imprime el arbol al estilo LISP
