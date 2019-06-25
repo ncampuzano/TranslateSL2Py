@@ -146,4 +146,24 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#readSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterReadSentence(SLLanguageParser.ReadSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#readSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression(SLLanguageParser.ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression(SLLanguageParser.ExpressionContext ctx);
 }

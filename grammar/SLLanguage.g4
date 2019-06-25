@@ -7,7 +7,7 @@ assignationTypes: objeto+;
 assignationVar: (ID (',' ID)* ':' tipo)+;
 objeto: ID ':' tipo;
 tipo: 'numerico' | 'cadena' | 'logico' | ID | 'vector' BIZQ PDER tipo | 'matriz' BIZQ BDER tipo | 'registro' LIZQ LDER;
-expr: NUM | CADENA | BOOL | DOUBLE ;
+expr: NUM | CADENA | BOOL | DOUBLE | ID;
 body: sentence+;
 sentence: ifSentence
           | repeatSentence
@@ -20,10 +20,11 @@ repeatSentence: 'repetir' ;
 whileSentence: 'desde' expression 'hasta' expr  ('paso' expr)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
 readSentence: 'leer' PIZQ ID PDER SMCOLON?;
-expression: expression OPERADOR expression
+expression: expr
+            | expression OPERADOR expression
             | PIZQ expression PDER
             | ID '=' expression
-            | expr;
+            ;
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;

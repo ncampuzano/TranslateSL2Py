@@ -93,4 +93,16 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrintSentence(SLLanguageParser.PrintSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#readSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReadSentence(SLLanguageParser.ReadSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(SLLanguageParser.ExpressionContext ctx);
 }

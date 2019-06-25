@@ -178,6 +178,30 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReadSentence(SLLanguageParser.ReadSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpression(SLLanguageParser.ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpression(SLLanguageParser.ExpressionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
