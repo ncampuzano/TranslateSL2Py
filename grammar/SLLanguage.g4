@@ -12,11 +12,18 @@ body: sentence+;
 sentence: ifSentence
           | repeatSentence
           | whileSentence
-          | printSentence;
+          | printSentence
+          | readSentence
+          | expression;
 ifSentence: 'si';
 repeatSentence: 'repetir' ;
-whileSentence: 'mientras';
-printSentence: 'imprimir';
+whileSentence: 'desde' expression 'hasta' expr  ('paso' expr)? LIZQ body LDER;
+printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
+readSentence: 'leer' PIZQ ID PDER SMCOLON?;
+expression: expression OPERADOR expression
+            | PIZQ expression PDER
+            | ID '=' expression
+            | expr;
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
@@ -34,5 +41,7 @@ ESP             : [ \t\r\n]+ -> skip ;
 NUM             : [0-9]+ ;
 DOUBLE          : [0-9]+( | [.][0-9]+) ;
 BOOL            : 'TRUE' | 'FALSE' | 'SI' | 'NO';
-CADENA          : ('\'' [a-zA-Z][a-zA-Z0-9!"#$%&/()=?¿\\]* '\'' | '"' [a-zA-Z][a-zA-Z0-9!"#$%&/()=?¿\\]* '"');
-SMCOLON : ';' ;
+CADENA          : '"'[a-zA-Z0-9!"#$%&/()=?-_.\\ \n]* '"';
+SMCOLON         : ';' ;
+COMA            : ',';
+OPERADOR        : ( '*' | '/' | '+' | '-' );
