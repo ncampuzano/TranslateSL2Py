@@ -286,4 +286,64 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionParameters(SLLanguageParser.FunctionParametersContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#subrutine}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubrutine(SLLanguageParser.SubrutineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#subrutine}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubrutine(SLLanguageParser.SubrutineContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#subrutineStart}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubrutineStart(SLLanguageParser.SubrutineStartContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#subrutineStart}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubrutineStart(SLLanguageParser.SubrutineStartContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#optionalReturn}.
+	 * @param ctx the parse tree
+	 */
+	void enterOptionalReturn(SLLanguageParser.OptionalReturnContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#optionalReturn}.
+	 * @param ctx the parse tree
+	 */
+	void exitOptionalReturn(SLLanguageParser.OptionalReturnContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#functionDeclartion}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionDeclartion(SLLanguageParser.FunctionDeclartionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#functionDeclartion}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionDeclartion(SLLanguageParser.FunctionDeclartionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaration(SLLanguageParser.DeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaration(SLLanguageParser.DeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#functionDeclarationParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionDeclarationParams(SLLanguageParser.FunctionDeclarationParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#functionDeclarationParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionDeclarationParams(SLLanguageParser.FunctionDeclarationParamsContext ctx);
 }

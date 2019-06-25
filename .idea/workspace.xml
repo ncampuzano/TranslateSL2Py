@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="dcc2fd92-bd41-4df5-a53f-fb314f13332e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/SLLanguageVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grammar/SLLanguage.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/SLLanguage.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/test.txt" afterDir="false" />
     </list>
@@ -29,8 +39,10 @@
               <folding>
                 <element signature="e#632#633#0" expanded="true" />
                 <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#1684#1685#0" expanded="true" />
-                <element signature="e#1726#1727#0" expanded="true" />
+                <element signature="e#1849#1850#0" expanded="true" />
+                <element signature="e#1886#1887#0" expanded="true" />
+                <element signature="e#1973#1974#0" expanded="true" />
+                <element signature="e#2012#2013#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/test.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+            <state relative-caret-position="68">
+              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="9" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -60,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+            <state relative-caret-position="-612">
+              <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -81,6 +93,9 @@
       <find>sino</find>
       <find>println</find>
       <find>bodyif</find>
+      <find>ID</find>
+      <find>assignationVar+</find>
+      <find>assignationVar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,7 +161,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/input/test.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/input" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -204,7 +219,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25416037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -221,7 +236,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Tool Output" order="8" sideWeight="0.4977307" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50907713" side_tool="true" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50907713" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" sideWeight="0.8948563" weight="0.5008183" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -290,8 +305,10 @@
           <folding>
             <element signature="e#632#633#0" expanded="true" />
             <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#1684#1685#0" expanded="true" />
-            <element signature="e#1726#1727#0" expanded="true" />
+            <element signature="e#1849#1850#0" expanded="true" />
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1973#1974#0" expanded="true" />
+            <element signature="e#2012#2013#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -308,15 +325,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/input/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        <state relative-caret-position="68">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="9" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        <state relative-caret-position="-612">
+          <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
         </state>
       </provider>
     </entry>

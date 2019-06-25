@@ -177,4 +177,40 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunctionParameters(SLLanguageParser.FunctionParametersContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#subrutine}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubrutine(SLLanguageParser.SubrutineContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#subrutineStart}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubrutineStart(SLLanguageParser.SubrutineStartContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#optionalReturn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOptionalReturn(SLLanguageParser.OptionalReturnContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#functionDeclartion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionDeclartion(SLLanguageParser.FunctionDeclartionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaration(SLLanguageParser.DeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#functionDeclarationParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionDeclarationParams(SLLanguageParser.FunctionDeclarationParamsContext ctx);
 }
