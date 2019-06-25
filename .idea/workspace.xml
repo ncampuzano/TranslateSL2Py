@@ -51,20 +51,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/input/test.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -96,8 +96,8 @@
         <option value="$PROJECT_DIR$/src/VisitorSLToPy.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/ListenerSLToPy.java" />
-        <option value="$PROJECT_DIR$/input/test.txt" />
         <option value="$PROJECT_DIR$/grammar/SLLanguage.g4" />
+        <option value="$PROJECT_DIR$/input/test.txt" />
       </list>
     </option>
   </component>
@@ -225,7 +225,7 @@
       <window_info anchor="bottom" id="Tool Output" order="8" sideWeight="0.4977307" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50907713" side_tool="true" visible="true" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="ANTLR Preview" order="11" sideWeight="0.8948563" visible="true" weight="0.5008183" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" sideWeight="0.8948563" weight="0.5008183" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -313,17 +313,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input/test.txt">
+    <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
+    <entry file="file://$PROJECT_DIR$/input/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

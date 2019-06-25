@@ -70,6 +70,12 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSentence(SLLanguageParser.SentenceContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#callToFunctionSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#assignationSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -153,4 +159,22 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitConstant(SLLanguageParser.ConstantContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#id}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId(SLLanguageParser.IdContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#vector}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVector(SLLanguageParser.VectorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#functionParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionParameters(SLLanguageParser.FunctionParametersContext ctx);
 }

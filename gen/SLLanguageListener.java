@@ -107,6 +107,16 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitSentence(SLLanguageParser.SentenceContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#callToFunctionSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#callToFunctionSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#assignationSentence}.
 	 * @param ctx the parse tree
 	 */
@@ -246,4 +256,34 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstant(SLLanguageParser.ConstantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#id}.
+	 * @param ctx the parse tree
+	 */
+	void enterId(SLLanguageParser.IdContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#id}.
+	 * @param ctx the parse tree
+	 */
+	void exitId(SLLanguageParser.IdContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#vector}.
+	 * @param ctx the parse tree
+	 */
+	void enterVector(SLLanguageParser.VectorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#vector}.
+	 * @param ctx the parse tree
+	 */
+	void exitVector(SLLanguageParser.VectorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#functionParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionParameters(SLLanguageParser.FunctionParametersContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#functionParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionParameters(SLLanguageParser.FunctionParametersContext ctx);
 }

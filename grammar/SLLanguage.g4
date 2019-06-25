@@ -17,7 +17,9 @@ sentence: ifSentence
           | switchSentence
           | doWhileSentence
           | assignationSentence
+          | callToFunctionSentence
           ;
+callToFunctionSentence: ID functionParameters;
 assignationSentence: ID '=' expression SMCOLON?;
 bodyIfSentence: body (SINO sinoSentence)* ;
 sinoSentence : ifSentence | sentence ;
@@ -31,11 +33,16 @@ switchSentence: 'eval' LIZQ caseSentence+ (SINO sentence)? LDER;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (('and' | 'or' )expression)? ;
 expression:  expression OPERADOR expression SMCOLON?
-            | PIZQ expression+ PDER
+            | PIZQ expression? (COMA expression)* PDER
             | OPERADOR expression
-            | BIZQ expression BDER
-            | constant;
-constant: NUM | CADENA | BOOL | DOUBLE | ID | VECTOR | CALLTOFUNCTION;
+            | BIZQ expression? (COMA expression)* BDER
+            | LIZQ expression? (COMA expression)* LDER
+            | constant
+            | callToFunctionSentence;
+constant: NUM | CADENA | BOOL | DOUBLE | id;
+id: ID (vector | functionParameters)?;
+vector: BIZQ expression (COMA expression)* BDER;
+functionParameters: PIZQ expression (COMA expression)* PDER;
 
 SINO            : 'sino';
 COMMENT 		: '/*' .*? '*/' -> skip ;
@@ -53,7 +60,6 @@ NUM             : '-'?[0-9]+ ;
 DOUBLE          : '-'?[0-9]+( | [.][0-9]+) ;
 BOOL            : 'TRUE' | 'FALSE' | 'SI' | 'NO';
 CADENA          : ('"' .*? '"' | '“' .*? '”' | '\'' .*? '\'');
-VECTOR          : [a-zA-Z][a-zA-Z0-9_]*' '*'['[a-zA-Z0-9_]']' ;
 ID              : [a-zA-Z][a-zA-Z0-9_]* ;
 ESP             : [ \t\r\n]+ -> skip ;
 SMCOLON         : ';' ;

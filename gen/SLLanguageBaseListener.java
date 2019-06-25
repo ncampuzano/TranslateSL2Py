@@ -135,6 +135,18 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -298,6 +310,42 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConstant(SLLanguageParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId(SLLanguageParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId(SLLanguageParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVector(SLLanguageParser.VectorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVector(SLLanguageParser.VectorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionParameters(SLLanguageParser.FunctionParametersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionParameters(SLLanguageParser.FunctionParametersContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
