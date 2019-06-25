@@ -1,4 +1,4 @@
-// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -87,16 +87,6 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitTipoVector(SLLanguageParser.TipoVectorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SLLanguageParser#constant}.
-	 * @param ctx the parse tree
-	 */
-	void enterConstant(SLLanguageParser.ConstantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SLLanguageParser#constant}.
-	 * @param ctx the parse tree
-	 */
-	void exitConstant(SLLanguageParser.ConstantContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#body}.
 	 * @param ctx the parse tree
 	 */
@@ -127,15 +117,15 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitIfSentence(SLLanguageParser.IfSentenceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * Enter a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
 	 */
-	void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
+	void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * Exit a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
 	 */
-	void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
+	void exitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#whileSentence}.
 	 * @param ctx the parse tree
@@ -146,6 +136,26 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWhileSentence(SLLanguageParser.WhileSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#doWhileSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoWhileSentence(SLLanguageParser.DoWhileSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#doWhileSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoWhileSentence(SLLanguageParser.DoWhileSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#printSentence}.
 	 * @param ctx the parse tree
@@ -206,4 +216,14 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpression(SLLanguageParser.ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(SLLanguageParser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(SLLanguageParser.ConstantContext ctx);
 }

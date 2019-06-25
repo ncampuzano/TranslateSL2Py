@@ -1,4 +1,4 @@
-// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -58,12 +58,6 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTipoVector(SLLanguageParser.TipoVectorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SLLanguageParser#constant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConstant(SLLanguageParser.ConstantContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#body}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -82,17 +76,29 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfSentence(SLLanguageParser.IfSentenceContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * Visit a parse tree produced by {@link SLLanguageParser#bodyIfSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
+	T visitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#whileSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitWhileSentence(SLLanguageParser.WhileSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#doWhileSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDoWhileSentence(SLLanguageParser.DoWhileSentenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#repeatSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#printSentence}.
 	 * @param ctx the parse tree
@@ -129,4 +135,10 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExpression(SLLanguageParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstant(SLLanguageParser.ConstantContext ctx);
 }

@@ -6,8 +6,8 @@ assignationConst: (ID (COMA ID)* '=' expression)+;
 assignationTypes: objeto+;
 assignationVar: (ID (COMA ID)* ':' tipo)+;
 objeto: ID ':' tipo;
-tipo: 'numerico' | 'cadena' | 'logico' | ID | 'vector' BIZQ tipoVector BDER tipo | 'matriz' BIZQ tipoVector BDER tipo | 'registro' LIZQ assignationVar LDER;
-tipoVector: (expression | MULTOP) (COMA tipoVector)*;
+tipo: 'vector' BIZQ tipoVector BDER tipo | 'matriz' BIZQ tipoVector BDER tipo | 'registro' LIZQ assignationVar LDER | 'numerico' | 'cadena' | 'logico' | ID ;
+tipoVector: ( MULTOP | expression ) (COMA tipoVector)*;
 body: sentence+;
 sentence: ifSentence
           | repeatSentence
@@ -34,8 +34,9 @@ expression:  expression OPERADOR expression SMCOLON?
             | BIZQ expression BDER
             | constant
             ;
-constant: VECTOR | NUM | CADENA | BOOL | DOUBLE | ID | CALLFUNCTION;
+constant: NUM | CADENA | BOOL | DOUBLE | ID | CALLFUNCTION;
 
+MULTOP          : '*';
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
 INICIO          : 'inicio';
@@ -57,6 +58,4 @@ SMCOLON         : ';' ;
 COMA            : ',' ;
 OPERADOR        : ( '*' | '/' | '+' | '-' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
 ROP		        : 'and' | 'or';
-MULTOP          : '*';
-VECTOR          : '-'?[a-zA-Z][a-zA-Z0-9_]*' '?'[''-'?[a-zA-Z][a-zA-Z0-9_]*']';
 SINO            : 'sino';

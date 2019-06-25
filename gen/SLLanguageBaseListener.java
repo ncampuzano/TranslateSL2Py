@@ -1,4 +1,4 @@
-// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -111,18 +111,6 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstant(SLLanguageParser.ConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConstant(SLLanguageParser.ConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterBody(SLLanguageParser.BodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -159,13 +147,13 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) { }
+	@Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) { }
+	@Override public void exitBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -178,6 +166,30 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitWhileSentence(SLLanguageParser.WhileSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDoWhileSentence(SLLanguageParser.DoWhileSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDoWhileSentence(SLLanguageParser.DoWhileSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -250,6 +262,18 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpression(SLLanguageParser.ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstant(SLLanguageParser.ConstantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstant(SLLanguageParser.ConstantContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
