@@ -136,6 +136,12 @@ public interface SLLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SLLanguageParser#defaultSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SLLanguageParser#caseSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -267,6 +267,18 @@ public class SLLanguageBaseListener implements SLLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCaseSentence(SLLanguageParser.CaseSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
