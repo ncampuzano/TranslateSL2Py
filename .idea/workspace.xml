@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc2fd92-bd41-4df5-a53f-fb314f13332e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguage.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguage.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/SLLanguageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/SLLanguageParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grammar/SLLanguage.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/SLLanguage.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListenerSLToPy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListenerSLToPy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+            <state relative-caret-position="578">
+              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -44,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="68">
+              <caret line="4" column="157" selection-start-line="4" selection-start-column="157" selection-end-line="4" selection-end-column="157" />
             </state>
           </provider>
         </entry>
@@ -53,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/test.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="37" selection-end-line="16" />
+            <state relative-caret-position="247">
+              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -62,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/3.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="11" column="3" lean-forward="true" selection-end-line="29" />
+            <state relative-caret-position="221">
+              <caret line="20" column="3" lean-forward="true" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -71,8 +59,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/4.txt">
           <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="15" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/1.txt">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="3" lean-forward="true" selection-end-line="16" />
+              <caret line="15" column="31" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/2.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51">
+              <caret line="23" column="7" lean-forward="true" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -257,7 +263,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6524064" visible="true" weight="0.25416037" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6524064" visible="true" weight="0.25416037" />
       <window_info id="Structure" order="1" sideWeight="0.34759358" side_tool="true" weight="0.25416037" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -266,7 +272,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49092284" visible="true" weight="0.3878887" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49092284" visible="true" weight="0.3878887" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -363,13 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ListenerSLToPy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -388,45 +387,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grammar/SLLanguage.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/input/1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="10" lean-forward="true" selection-end-line="24" />
+        <state relative-caret-position="136">
+          <caret line="15" column="31" selection-end-line="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/2.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="32" column="32" selection-end-line="58" />
+        <state relative-caret-position="-51">
+          <caret line="23" column="7" lean-forward="true" selection-end-line="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/3.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="11" column="3" lean-forward="true" selection-end-line="29" />
+        <state relative-caret-position="221">
+          <caret line="20" column="3" lean-forward="true" selection-end-line="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/4.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="3" lean-forward="true" selection-end-line="16" />
+        <state>
+          <caret selection-end-line="15" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" selection-end-line="16" />
+        <state relative-caret-position="247">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="68">
+          <caret line="4" column="157" selection-start-line="4" selection-start-column="157" selection-end-line="4" selection-end-column="157" />
         </state>
       </provider>
     </entry>
