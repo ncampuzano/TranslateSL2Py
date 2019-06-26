@@ -33,9 +33,9 @@ switchSentence: 'eval' LIZQ caseSentence+ (defaultSentence)? LDER;
 defaultSentence: SINO sentence;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (ROP expressionBoolean)? ;
-expression:  e1=expression (OPERADORSUMA | OPERADOR ) e2=expression SMCOLON?
+expression: (OPERADORSUMA | OPERADOR ) expression
+            |e1=expression (OPERADORSUMA | OPERADOR ) e2=expression SMCOLON?
             | PIZQ e1=expression? (COMA expression)* PDER
-            | (OPERADORSUMA | OPERADOR ) expression
             | BIZQ expression? (COMA expression)* BDER
             | LIZQ expression? (COMA expression)* LDER
             | constant
@@ -44,7 +44,7 @@ constant: NUM | CADENA | BOOL | DOUBLE | id;
 id: ID (vector | functionParameters | PERIOD constant)?;
 vector: BIZQ expression (COMA expression)* BDER (PERIOD constant)? ;
 functionParameters: PIZQ expression? (COMA expression)* PDER;
-subrutine: subrutineStart s;
+subrutine: subrutineStart settings* INICIO body ('retorna' PIZQ expression PDER)? FIN;
 subrutineStart: 'subrutina' functionDeclartion  optionalReturn?;
 optionalReturn: 'retorna' tipo;
 functionDeclartion: ID PIZQ functionDeclarationParams PDER;
@@ -80,7 +80,7 @@ ID              : [a-zA-Z][a-zA-Z0-9_]* ;
 ESP             : [ \t\r\n]+ -> skip ;
 SMCOLON         : ';' ;
 COMA            : ',' ;
-OPERADORSUMA    : ('+' | '-');
-OPERADOR        : ( '*' | '/' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
+OPERADORSUMA    : ('+' | '-' | '*' | '/' );
+OPERADOR        : ( '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
 
 

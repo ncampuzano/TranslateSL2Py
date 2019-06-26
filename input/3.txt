@@ -1,5 +1,5 @@
 const
-  MAX_ALUMNOS = 20
+  MAX_ALUMNOS = 5
 var
   notas : vector [MAX_ALUMNOS] numerico
   suma_notas : numerico // suma de todas las notas leidas

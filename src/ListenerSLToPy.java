@@ -101,7 +101,9 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                 }
                 if(ctx.constant().id().vector()!= null){
                     expr += "[";
+                    expr += "int(";
                     expr += translationOfExpression(ctx.constant().id().vector().expression(0));
+                    expr += ")-1";
                     expr += "]";
                 }
             }
@@ -169,8 +171,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     @Override
     public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx){
         System.out.print("if "
-                + translationOfExpressionBoolean(ctx.expressionBoolean())
-                + ":");
+                + translationOfExpressionBoolean(ctx.expressionBoolean()));
     }
     @Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) {
         System.out.print(":");
@@ -209,9 +210,11 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         String id = ctx.ID().toString();
         if (ctx.vector() != null) {
             id += '[';
+            id += "int(";
             id += translationOfExpression(ctx.vector().expression(0));
+            id += ")-1";
             for (int i = 1; i < ctx.vector().expression().size(); i++) {
-                id += ", " + translationOfExpression(ctx.vector().expression(i));
+                id += ", int(" + translationOfExpression(ctx.vector().expression(i)) + ")-1";
             }
             id += ']';
         }
@@ -231,7 +234,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         return  id;
     }
     @Override public void enterAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx) {
-        String id = ctx.id().ID().toString();
+        String id = translateId(ctx.id());
         String expr = translationOfExpression(ctx.expression());
         System.out.print(id + " = " + expr);
     }
@@ -248,7 +251,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                 + translationOfExpression(ctx.expression(0))
                 + "), int("
                 + translationOfExpression(ctx.expression(1))
-                + (start ? ")+1": ")"));
+                + ")+1");
         if(ctx.PASO()!= null){
             System.out.print(", int(" + translationOfExpression(ctx.expression(2))+")");
         }
@@ -286,7 +289,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override
     public void enterDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx) {
-        System.out.print("se");
+        System.out.print("se:");
     }
 
     @Override
@@ -316,11 +319,14 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                         .toString());
             }
         }
-        System.out.print(")");
+        System.out.print("):");
         amountOfTabsStartOfSentence++;
     }
-    @Override public void exitSubrutine(SLLanguageParser.SubrutineContext ctx) {amountOfTabsStartOfSentence--; }
+    @Override public void exitSubrutine(SLLanguageParser.SubrutineContext ctx) { amountOfTabsStartOfSentence--; }
 
+    @Override public void exitSubrutineStart(SLLanguageParser.SubrutineStartContext ctx) {
+        System.out.println();
+    }
     @Override
     public void enterCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx) {
         String expr = "";
