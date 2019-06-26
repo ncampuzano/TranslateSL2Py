@@ -1,34 +1,65 @@
-const
-  MAX_ALUMNOS = 20
 var
-  notas : vector [MAX_ALUMNOS] numerico
-  suma_notas : numerico // suma de todas las notas leidas
-  prom : numerico // promedio del curso
-  cnb : numerico // cantidad con notas bajas
-  k : numerico
-  pnt : numerico
-  M3 : matriz [3, 5, 2] numerico // matriz 3D
-  v : vector [*] numerico
-  M : matriz [*, *] numerico
-  M1 : matriz [*, 8] numerico
-  dias_sem : vector [7] cadena
-
+  tot : numerico
+  n : numerico
 inicio
-  desde k=1 hasta MAX_ALUMNOS
-  {
-    imprimir ("\nIngrese nota para alumno numero ", k, ":")
-    leer (notas [k])
-    suma_notas = suma_notas + notas [k]
-  }
-  prom = suma_notas / MAX_ALUMNOS
+  cls()
+  imprimir_explicacion()
+  imprimir ("Numero entero? ")
+  leer (n)
+  calcular_suma (n)
+  imprimir ("\nLa suma de los primeros ", n, "numeros enteros es ", tot)
+fin
 
-  cnb = 0
-  desde k=1 hasta MAX_ALUMNOS
+subrutina imprimir_explicacion()
+inicio
+  imprimir ("\nEste programa de ejemplo calcula la suma de los enteros",
+            "\npositivos comprendidos entre 1 y un valor ",
+            "que se ingresa\n")
+fin
+
+subrutina calcular_suma (entero_tope : numerico)
+/*
+  Ejemplo de subrutina que recibe un parametro.
+*/
+var
+  k : numerico
+  inicio
+  tot = 0
+  desde k = 1 hasta entero_tope
   {
-    si ( notas [k] < prom )
-    {
-      cnb = cnb + 1
-    }
+    tot = tot + k
   }
-  imprimir ("\nExisten ", cnb, " alumnos con notas inferiores"," al promedio del curso, que es ", prom)
+fin
+
+subrutina entero (n : numerico) retorna numerico
+var
+  ent : numerico
+inicio
+  ent = 0
+  mientras ( n >= 1 )
+  {
+    ent = ent + 1
+    n = n - 1
+  }
+  retorna ( ent )
+fin
+
+subrutina mi_sub (a : numerico; ref b : numerico)
+/*
+  a se recibe por valor, pero b por referencia.
+*/
+inicio
+  a = 5
+  b = b * 5
+  imprimir ( "\n", a, " ", b)
+fin
+
+subrutina impr_vect (v : vector [*] numerico)
+var
+  k : numerico
+inicio
+  desde k=1 hasta alen (v)
+  {
+    imprimir (v [k], "")
+  }
 fin

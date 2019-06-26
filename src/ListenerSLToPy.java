@@ -1,5 +1,6 @@
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import javax.tools.StandardLocation;
 import java.util.List;
 
 public class ListenerSLToPy extends SLLanguageBaseListener {
@@ -245,10 +246,61 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         System.out.print("el");
         //System.out.print("if ");
     }
+    @Override
     public void enterDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx) {
         System.out.print("se");
-
     }
+
+    @Override
+    public void enterSubrutineStart(SLLanguageParser.SubrutineStartContext ctx) {
+        System.out.println();
+        System.out.print("def "
+            + ctx.functionDeclartion().ID().toString()
+            + "(" );
+        if(ctx.functionDeclartion().functionDeclarationParams().declaration(0)!= null) {
+            System.out.print(ctx
+                    .functionDeclartion()
+                    .functionDeclarationParams()
+                    .declaration(0)
+                    .assignationVar(0)
+                    .id(0)
+                    .ID()
+                    .toString());
+
+            for (int i = 1; i < ctx.functionDeclartion().functionDeclarationParams().declaration().size(); i++) {
+                System.out.print(" , " + ctx
+                        .functionDeclartion()
+                        .functionDeclarationParams()
+                        .declaration(i)
+                        .assignationVar(0)
+                        .id(0)
+                        .ID()
+                        .toString());
+            }
+        }
+        System.out.print(")");
+        amountOfTabsStartOfSentence++;
+    }
+    @Override public void exitSubrutine(SLLanguageParser.SubrutineContext ctx) {amountOfTabsStartOfSentence--; }
+
+    @Override
+    public void enterCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx) {
+        String expr = "";
+        expr += ctx.id().ID().toString();
+        expr += "(";
+        if(ctx.functionParameters().expression().size()!= 0 ) {
+            expr += translationOfExpression(ctx.functionParameters().expression(0));
+            for (int i = 1; i < ctx.functionParameters().expression().size(); i++) {
+                expr += ",";
+                expr += translationOfExpression(ctx.functionParameters().expression(i));
+            }
+        }
+        expr += ")";
+        System.out.print(expr);
+    }
+
+
+
 
 
 
