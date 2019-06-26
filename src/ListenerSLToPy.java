@@ -49,7 +49,18 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
             } else if (ctx.constant().DOUBLE() != null) {
                 expr = ctx.constant().DOUBLE().toString();
             } else if (ctx.constant().id() != null && ctx.constant().id().ID() != null) {
-                expr = ctx.constant().id().ID().toString();
+                expr += ctx.constant().id().ID().toString();
+                if(ctx.constant().id().functionParameters()!= null){
+                    expr += "(";
+                    if(ctx.constant().id().functionParameters().expression()!= null) {
+                        expr += translationOfExpression(ctx.constant().id().functionParameters().expression(0));
+                        for (int i = 1; i < ctx.constant().id().functionParameters().expression().size(); i++) {
+                            expr += ",";
+                            expr += translationOfExpression(ctx.constant().id().functionParameters().expression(i));
+                        }
+                    }
+                    expr += ")";
+                }
             }
         }
         else if(ctx.callToFunctionSentence() != null){
@@ -78,6 +89,10 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                 expr += " ";
                 expr += translationOfExpression(ctx.e2);
             }
+        }
+        else if (ctx.OPERADOR()!= null){
+            expr += ctx.OPERADOR().toString();
+            expr += translationOfExpression(ctx.expression(0));
         }
         return expr;
     }
