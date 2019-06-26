@@ -1996,15 +1996,15 @@ public class SLLanguageParser extends Parser {
 		public ExpressionContext e2;
 		public TerminalNode PIZQ() { return getToken(SLLanguageParser.PIZQ, 0); }
 		public TerminalNode PDER() { return getToken(SLLanguageParser.PDER, 0); }
+		public List<TerminalNode> COMA() { return getTokens(SLLanguageParser.COMA); }
+		public TerminalNode COMA(int i) {
+			return getToken(SLLanguageParser.COMA, i);
+		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
-		}
-		public List<TerminalNode> COMA() { return getTokens(SLLanguageParser.COMA); }
-		public TerminalNode COMA(int i) {
-			return getToken(SLLanguageParser.COMA, i);
 		}
 		public TerminalNode OPERADOR() { return getToken(SLLanguageParser.OPERADOR, 0); }
 		public TerminalNode BIZQ() { return getToken(SLLanguageParser.BIZQ, 0); }
@@ -2066,7 +2066,7 @@ public class SLLanguageParser extends Parser {
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADOR))) != 0)) {
 					{
 					setState(315);
-					expression(0);
+					((ExpressionContext)_localctx).e1 = expression(0);
 					}
 				}
 

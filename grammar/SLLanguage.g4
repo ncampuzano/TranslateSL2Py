@@ -33,7 +33,7 @@ switchSentence: 'eval' LIZQ caseSentence+ (SINO sentence)? LDER;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (('and' | 'or' )expression)? ;
 expression:  e1=expression OPERADOR e2=expression SMCOLON?
-            | PIZQ expression? (COMA expression)* PDER
+            | PIZQ e1=expression? (COMA expression)* PDER
             | OPERADOR expression
             | BIZQ expression? (COMA expression)* BDER
             | LIZQ expression? (COMA expression)* LDER

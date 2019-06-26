@@ -52,9 +52,26 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                 expr = ctx.constant().id().ID().toString();
             }
         }
+        else if(ctx.callToFunctionSentence() != null){
+            expr += ctx.callToFunctionSentence().id().ID().toString();
+            expr += "(";
+            if(ctx.callToFunctionSentence().functionParameters().expression()!= null) {
+                expr += ctx.callToFunctionSentence().functionParameters().expression(0).toString();
+                for (int i = 1; i < ctx.callToFunctionSentence().functionParameters().expression().size(); i++) {
+                    expr += ",";
+                    expr += ctx.callToFunctionSentence().functionParameters().expression(i).toString();
+                }
+            }
+            expr += ")";
+        }
 
         else if(ctx.e1 != null ){
-            if(ctx.e2 != null){
+            if(ctx.PIZQ()!= null){
+                expr += "(";
+                expr += translationOfExpression(ctx.e1);
+                expr += ")";
+            }
+            else if(ctx.e2 != null){
                 expr += translationOfExpression(ctx.e1);
                 expr += " ";
                 expr += ctx.OPERADOR().toString();
