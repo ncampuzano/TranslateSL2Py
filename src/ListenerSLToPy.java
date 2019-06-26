@@ -245,6 +245,23 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override public void exitSubrutine(SLLanguageParser.SubrutineContext ctx) {amountOfTabsStartOfSentence--; }
 
+    @Override
+    public void enterCallToFunctionSentence(SLLanguageParser.CallToFunctionSentenceContext ctx) {
+        String expr = "";
+        expr += ctx.id().ID().toString();
+        expr += "(";
+        if(ctx.functionParameters().expression().size()!= 0 ) {
+            expr += translationOfExpression(ctx.functionParameters().expression(0));
+            for (int i = 1; i < ctx.functionParameters().expression().size(); i++) {
+                expr += ",";
+                expr += translationOfExpression(ctx.functionParameters().expression(i));
+            }
+        }
+        expr += ")";
+        System.out.print(expr);
+    }
+
+
 
 
 
