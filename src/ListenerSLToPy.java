@@ -158,7 +158,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
             expr += " ";
             expr += ctx.ROP().toString();
             expr += " ";
-            expr += translationOfExpression(ctx.expressionBoolean().expression());
+            expr += translationOfExpressionBoolean(ctx.expressionBoolean());
         }
         return expr;
     }
@@ -168,11 +168,9 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override
     public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx){
-        System.out.print("if ");
-    }
-    @Override
-    public void enterExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx) {
-        System.out.print(translationOfExpression(ctx.expression()));
+        System.out.print("if "
+                + translationOfExpressionBoolean(ctx.expressionBoolean())
+                + ":");
     }
     @Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) {
         System.out.print(":");
