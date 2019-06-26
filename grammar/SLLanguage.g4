@@ -32,11 +32,7 @@ readSentence: 'leer' PIZQ id (COMA id)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ (defaultSentence)? LDER;
 defaultSentence: SINO sentence;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
-<<<<<<< HEAD
 expressionBoolean: expression (ROP expressionBoolean)? ;
-=======
-expressionBoolean: expression (ROP expression)? ;
->>>>>>> f4ea604ad6f331daaba702816c22bacba8cc78ca
 expression:  e1=expression OPERADOR e2=expression SMCOLON?
             | PIZQ e1=expression? (COMA expression)* PDER
             | OPERADOR expression

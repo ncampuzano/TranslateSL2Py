@@ -217,6 +217,16 @@ public interface SLLanguageListener extends ParseTreeListener {
 	 */
 	void exitSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SLLanguageParser#defaultSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SLLanguageParser#defaultSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SLLanguageParser#caseSentence}.
 	 * @param ctx the parse tree
 	 */
