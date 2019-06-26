@@ -1,4 +1,4 @@
-// Generated from C:/Users/ALEJA/Documents/AntlrWorkspace/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
+// Generated from C:/Users/Nicolas Campuzano/iCloudDrive/Universidad Nacional/Semestre IX/Progamming Languages/TranslateSL2Py/grammar\SLLanguage.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -1967,13 +1967,13 @@ public class SLLanguageParser extends Parser {
 	}
 
 	public static class ExpressionBooleanContext extends ParserRuleContext {
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
-		}
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
 		}
 		public TerminalNode ROP() { return getToken(SLLanguageParser.ROP, 0); }
+		public ExpressionBooleanContext expressionBoolean() {
+			return getRuleContext(ExpressionBooleanContext.class,0);
+		}
 		public ExpressionBooleanContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2010,7 +2010,7 @@ public class SLLanguageParser extends Parser {
 				setState(313);
 				match(ROP);
 				setState(314);
-				expression(0);
+				expressionBoolean();
 				}
 			}
 
@@ -3102,7 +3102,7 @@ public class SLLanguageParser extends Parser {
 		"\u0133\u0137\7$\2\2\u0134\u0136\5\24\13\2\u0135\u0134\3\2\2\2\u0136\u0139"+
 		"\3\2\2\2\u0137\u0135\3\2\2\2\u0137\u0138\3\2\2\2\u0138/\3\2\2\2\u0139"+
 		"\u0137\3\2\2\2\u013a\u013d\5\62\32\2\u013b\u013c\7\33\2\2\u013c\u013e"+
-		"\5\62\32\2\u013d\u013b\3\2\2\2\u013d\u013e\3\2\2\2\u013e\61\3\2\2\2\u013f"+
+		"\5\60\31\2\u013d\u013b\3\2\2\2\u013d\u013e\3\2\2\2\u013e\61\3\2\2\2\u013f"+
 		"\u0140\b\32\1\2\u0140\u0142\7#\2\2\u0141\u0143\5\62\32\2\u0142\u0141\3"+
 		"\2\2\2\u0142\u0143\3\2\2\2\u0143\u0148\3\2\2\2\u0144\u0145\7\60\2\2\u0145"+
 		"\u0147\5\62\32\2\u0146\u0144\3\2\2\2\u0147\u014a\3\2\2\2\u0148\u0146\3"+

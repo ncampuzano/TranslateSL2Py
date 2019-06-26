@@ -103,12 +103,12 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     public String translationOfExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx){
         String expr = "";
-        expr += translationOfExpression(ctx.expression(0));
+        expr += translationOfExpression(ctx.expression());
         if(ctx.ROP()!= null){
             expr += " ";
             expr += ctx.ROP().toString();
             expr += " ";
-            expr += translationOfExpression(ctx.expression(1));
+            expr += translationOfExpression(ctx.expressionBoolean().expression());
         }
         return expr;
     }
