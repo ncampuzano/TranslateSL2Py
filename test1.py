@@ -1,6 +1,12 @@
-print(str("\nSuma de numeros pares entre 1 y n.\nPor favor ") , str( "ingrese un valor para n: "))
-n = input()
-suma = 0
-for k in range(int(2), int(n)+1, int(2)):
-	suma = suma + k
-print(str("\nLa suma es ") , str( suma))
+MAX_ALUMNOS = 20
+
+for k in range(int(1), int(MAX_ALUMNOS)+1):
+	print(str("\nIngrese nota para alumno numero ") , str( k) , str( ":"))
+	notas = input()
+	sumanotas = sumanotas + notas[k]
+prom = suma_notas / MAX_ALUMNOS
+cnb = 0
+for k in range(int(1), int(MAX_ALUMNOS)+1):
+	if notas[k] < prom:
+		cnb = cnb + 1
+print(str("\nExisten ") , str( cnb) , str( " alumnos con notas inferiores") , str( " al promedio del curso, que es ") , str( prom))
