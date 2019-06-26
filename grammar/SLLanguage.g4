@@ -33,16 +33,16 @@ switchSentence: 'eval' LIZQ caseSentence+ (defaultSentence)? LDER;
 defaultSentence: SINO sentence;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (ROP expressionBoolean)? ;
-expression:  e1=expression OPERADOR e2=expression SMCOLON?
+expression:  e1=expression (OPERADORSUMA | OPERADOR ) e2=expression SMCOLON?
             | PIZQ e1=expression? (COMA expression)* PDER
-            | OPERADOR expression
+            | (OPERADORSUMA | OPERADOR ) expression
             | BIZQ expression? (COMA expression)* BDER
             | LIZQ expression? (COMA expression)* LDER
             | constant
             | callToFunctionSentence;
 constant: NUM | CADENA | BOOL | DOUBLE | id;
-id: ID (vector | functionParameters | '.' constant)?;
-vector: BIZQ expression (COMA expression)* BDER ('.' constant)? ;
+id: ID (vector | functionParameters | PERIOD constant)?;
+vector: BIZQ expression (COMA expression)* BDER (PERIOD constant)? ;
 functionParameters: PIZQ expression? (COMA expression)* PDER;
 subrutine: subrutineStart s;
 subrutineStart: 'subrutina' functionDeclartion  optionalReturn?;
@@ -51,6 +51,7 @@ functionDeclartion: ID PIZQ functionDeclarationParams PDER;
 declaration: assignationVar+;
 functionDeclarationParams: 'ref'? declaration (';' 'ref'* declaration)* | ;
 
+PERIOD          : '.';
 ROP		        : 'and' | 'or';
 PASO            : 'paso';
 SINO            : 'sino';
@@ -79,6 +80,7 @@ ID              : [a-zA-Z][a-zA-Z0-9_]* ;
 ESP             : [ \t\r\n]+ -> skip ;
 SMCOLON         : ';' ;
 COMA            : ',' ;
-OPERADOR        : ( '*' | '/' | '+' | '-' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
+OPERADORSUMA    : ('+' | '-');
+OPERADOR        : ( '*' | '/' | '^' | '%' | '=' | '>' | '<' | '<=' | '>=' | 'and' | 'or' );
 
 

@@ -26,19 +26,18 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     @Override
     public void enterAssignationVar(SLLanguageParser.AssignationVarContext ctx) {
         System.out.print(ctx.id(0).ID().toString());
+        System.out.println(" = " + translateTipo(ctx.tipo()));
         for(int i = 1; i < ctx.id().size(); i++){
-            System.out.print(", " + ctx.id(i).ID().toString());
+            System.out.print(ctx.id(i).ID().toString());
+            System.out.println(" = " + translateTipo(ctx.tipo()));
         }
-        System.out.print(" = " + translateTipo(ctx.tipo()));
-        System.out.println();
     }
     public String translateTipo(SLLanguageParser.TipoContext ctx) {
         String tipo = "";
         if (ctx.VECTOR() != null) {
             if (ctx.tipoVector().expression() != null) {
-                tipo += '[';
+                tipo += "[0]*";
                 tipo += translationOfExpression(ctx.tipoVector().expression());
-                tipo += ']';
             } else {
                 tipo = "[]";
             }
@@ -127,15 +126,27 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                 expr += ")";
             }
             else if(ctx.e2 != null){
-                expr += translationOfExpression(ctx.e1);
-                expr += " ";
-                expr += ctx.OPERADOR().toString();
-                expr += " ";
-                expr += translationOfExpression(ctx.e2);
+                if (ctx.OPERADORSUMA() != null) {
+                    expr += "int(" + translationOfExpression(ctx.e1) + ")";
+                    expr += " ";
+                    expr += ctx.OPERADORSUMA().toString();
+                    expr += " ";
+                    expr += "int(" + translationOfExpression(ctx.e2) + ")";
+                } else {
+                    expr += translationOfExpression(ctx.e1);
+                    expr += " ";
+                    expr += ctx.OPERADOR().toString();
+                    expr += " ";
+                    expr += translationOfExpression(ctx.e2);
+                }
             }
         }
         else if (ctx.OPERADOR()!= null){
             expr += ctx.OPERADOR().toString();
+            expr += translationOfExpression(ctx.expression(0));
+        }
+        else if (ctx.OPERADORSUMA()!= null){
+            expr += ctx.OPERADORSUMA().toString();
             expr += translationOfExpression(ctx.expression(0));
         }
         return expr;
@@ -186,15 +197,40 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override public void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx) {
 
-        System.out.print(ctx.id(0).ID().toString());
+        System.out.print(translateId(ctx.id(0)));
         for(int i = 1; i <= ctx.id().size()-1; i++){
-            System.out.print(" , " + ctx.id(i).ID().toString());
+            System.out.print(" , " + translateId(ctx.id(i)));
         }
         System.out.print(" = input()");
 
         for(int i = 0; i < ctx.id().size()-1; i++){
             System.out.print(" , input()");
         }
+    }
+    public String translateId(SLLanguageParser.IdContext ctx) {
+        String id = ctx.ID().toString();
+        if (ctx.vector() != null) {
+            id += '[';
+            id += translationOfExpression(ctx.vector().expression(0));
+            for (int i = 1; i < ctx.vector().expression().size(); i++) {
+                id += ", " + translationOfExpression(ctx.vector().expression(i));
+            }
+            id += ']';
+        }
+        if (ctx.functionParameters() != null) {
+            if(ctx.functionParameters().expression().size()!= 0 ) {
+                id += " ";
+                id += translationOfExpression(ctx.functionParameters().expression(0));
+                for (int i = 1; i < ctx.functionParameters().expression().size(); i++) {
+                    id += ", ";
+                    id += translationOfExpression(ctx.functionParameters().expression(i));
+                }
+            }
+        }
+        if (ctx.PERIOD() != null) {
+            id += "." + ctx.constant().toString();
+        }
+        return  id;
     }
     @Override public void enterAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx) {
         String id = ctx.id().ID().toString();
@@ -204,13 +240,17 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
 
     @Override
     public void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) {
+        Boolean start = false;
+        if (translationOfExpression(ctx.expression(0)) == "0") {
+            start = true;
+        }
         System.out.print("for "
                 +  ctx.id().getText()
                 + " in range(int("
                 + translationOfExpression(ctx.expression(0))
                 + "), int("
                 + translationOfExpression(ctx.expression(1))
-                + ")+1");
+                + (start ? ")+1": ")"));
         if(ctx.PASO()!= null){
             System.out.print(", int(" + translationOfExpression(ctx.expression(2))+")");
         }

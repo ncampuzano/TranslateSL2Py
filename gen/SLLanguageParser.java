@@ -18,11 +18,11 @@ public class SLLanguageParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, ROP=19, PASO=20, SINO=21, VECTOR=22, MATRIZ=23, REGISTRO=24, 
+		PERIOD=18, ROP=19, PASO=20, SINO=21, VECTOR=22, MATRIZ=23, REGISTRO=24, 
 		NUMERICO=25, CADENATIPO=26, LOGICO=27, COMMENT=28, LINE_COMMENT=29, INICIO=30, 
 		FIN=31, PROGRAMA=32, PIZQ=33, PDER=34, BIZQ=35, BDER=36, LIZQ=37, LDER=38, 
 		NUM=39, DOUBLE=40, BOOL=41, CADENA=42, ID=43, ESP=44, SMCOLON=45, COMA=46, 
-		OPERADOR=47;
+		OPERADORSUMA=47, OPERADOR=48;
 	public static final int
 		RULE_s = 0, RULE_settings = 1, RULE_assignationConst = 2, RULE_assignationTypes = 3, 
 		RULE_assignationVar = 4, RULE_objeto = 5, RULE_tipo = 6, RULE_tipoVector = 7, 
@@ -53,7 +53,7 @@ public class SLLanguageParser extends Parser {
 		return new String[] {
 			null, "'const'", "'tipos'", "'var'", "'='", "':'", "'si'", "'mientras'", 
 			"'repetir'", "'hasta'", "'desde'", "'imprimir'", "'leer'", "'eval'", 
-			"'caso'", "'.'", "'subrutina'", "'retorna'", "'ref'", null, "'paso'", 
+			"'caso'", "'subrutina'", "'retorna'", "'ref'", "'.'", null, "'paso'", 
 			"'sino'", "'vector'", "'matriz'", "'registro'", "'numerico'", "'cadena'", 
 			"'logico'", null, null, "'inicio'", "'fin'", "'programa'", "'('", "')'", 
 			"'['", "']'", "'{'", "'}'", null, null, null, null, null, null, "';'", 
@@ -64,11 +64,11 @@ public class SLLanguageParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, "ROP", "PASO", "SINO", "VECTOR", 
-			"MATRIZ", "REGISTRO", "NUMERICO", "CADENATIPO", "LOGICO", "COMMENT", 
+			null, null, null, null, null, null, "PERIOD", "ROP", "PASO", "SINO", 
+			"VECTOR", "MATRIZ", "REGISTRO", "NUMERICO", "CADENATIPO", "LOGICO", "COMMENT", 
 			"LINE_COMMENT", "INICIO", "FIN", "PROGRAMA", "PIZQ", "PDER", "BIZQ", 
 			"BDER", "LIZQ", "LDER", "NUM", "DOUBLE", "BOOL", "CADENA", "ID", "ESP", 
-			"SMCOLON", "COMA", "OPERADOR"
+			"SMCOLON", "COMA", "OPERADORSUMA", "OPERADOR"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -2030,6 +2030,7 @@ public class SLLanguageParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
+		public TerminalNode OPERADORSUMA() { return getToken(SLLanguageParser.OPERADORSUMA, 0); }
 		public TerminalNode OPERADOR() { return getToken(SLLanguageParser.OPERADOR, 0); }
 		public TerminalNode BIZQ() { return getToken(SLLanguageParser.BIZQ, 0); }
 		public TerminalNode BDER() { return getToken(SLLanguageParser.BDER, 0); }
@@ -2087,7 +2088,7 @@ public class SLLanguageParser extends Parser {
 				setState(316);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADOR))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADORSUMA) | (1L << OPERADOR))) != 0)) {
 					{
 					setState(315);
 					((ExpressionContext)_localctx).e1 = expression(0);
@@ -2117,7 +2118,15 @@ public class SLLanguageParser extends Parser {
 			case 2:
 				{
 				setState(326);
-				match(OPERADOR);
+				_la = _input.LA(1);
+				if ( !(_la==OPERADORSUMA || _la==OPERADOR) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
 				setState(327);
 				expression(5);
 				}
@@ -2129,7 +2138,7 @@ public class SLLanguageParser extends Parser {
 				setState(330);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADOR))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADORSUMA) | (1L << OPERADOR))) != 0)) {
 					{
 					setState(329);
 					expression(0);
@@ -2163,7 +2172,7 @@ public class SLLanguageParser extends Parser {
 				setState(342);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADOR))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADORSUMA) | (1L << OPERADOR))) != 0)) {
 					{
 					setState(341);
 					expression(0);
@@ -2220,7 +2229,15 @@ public class SLLanguageParser extends Parser {
 					setState(356);
 					if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 					setState(357);
-					match(OPERADOR);
+					_la = _input.LA(1);
+					if ( !(_la==OPERADORSUMA || _la==OPERADOR) ) {
+					_errHandler.recoverInline(this);
+					}
+					else {
+						if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+						_errHandler.reportMatch(this);
+						consume();
+					}
 					setState(358);
 					((ExpressionContext)_localctx).e2 = expression(0);
 					setState(360);
@@ -2345,6 +2362,7 @@ public class SLLanguageParser extends Parser {
 		public FunctionParametersContext functionParameters() {
 			return getRuleContext(FunctionParametersContext.class,0);
 		}
+		public TerminalNode PERIOD() { return getToken(SLLanguageParser.PERIOD, 0); }
 		public ConstantContext constant() {
 			return getRuleContext(ConstantContext.class,0);
 		}
@@ -2393,7 +2411,7 @@ public class SLLanguageParser extends Parser {
 			case 3:
 				{
 				setState(377);
-				match(T__14);
+				match(PERIOD);
 				setState(378);
 				constant();
 				}
@@ -2425,6 +2443,7 @@ public class SLLanguageParser extends Parser {
 		public TerminalNode COMA(int i) {
 			return getToken(SLLanguageParser.COMA, i);
 		}
+		public TerminalNode PERIOD() { return getToken(SLLanguageParser.PERIOD, 0); }
 		public ConstantContext constant() {
 			return getRuleContext(ConstantContext.class,0);
 		}
@@ -2482,7 +2501,7 @@ public class SLLanguageParser extends Parser {
 			case 1:
 				{
 				setState(391);
-				match(T__14);
+				match(PERIOD);
 				setState(392);
 				constant();
 				}
@@ -2545,7 +2564,7 @@ public class SLLanguageParser extends Parser {
 			setState(397);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADOR))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << BIZQ) | (1L << LIZQ) | (1L << NUM) | (1L << DOUBLE) | (1L << BOOL) | (1L << CADENA) | (1L << ID) | (1L << OPERADORSUMA) | (1L << OPERADOR))) != 0)) {
 				{
 				setState(396);
 				expression(0);
@@ -2666,13 +2685,13 @@ public class SLLanguageParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(411);
-			match(T__15);
+			match(T__14);
 			setState(412);
 			functionDeclartion();
 			setState(414);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==T__16) {
+			if (_la==T__15) {
 				{
 				setState(413);
 				optionalReturn();
@@ -2722,7 +2741,7 @@ public class SLLanguageParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(416);
-			match(T__16);
+			match(T__15);
 			setState(417);
 			tipo();
 			}
@@ -2889,17 +2908,17 @@ public class SLLanguageParser extends Parser {
 			setState(447);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__17:
+			case T__16:
 			case ID:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(430);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (_la==T__17) {
+				if (_la==T__16) {
 					{
 					setState(429);
-					match(T__17);
+					match(T__16);
 					}
 				}
 
@@ -2916,11 +2935,11 @@ public class SLLanguageParser extends Parser {
 					setState(437);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-					while (_la==T__17) {
+					while (_la==T__16) {
 						{
 						{
 						setState(434);
-						match(T__17);
+						match(T__16);
 						}
 						}
 						setState(439);
@@ -2973,7 +2992,7 @@ public class SLLanguageParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\61\u01c4\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62\u01c4\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -3009,70 +3028,70 @@ public class SLLanguageParser extends Parser {
 		" \3 \3 \5 \u01a1\n \3!\3!\3!\3\"\3\"\3\"\3\"\3\"\3#\6#\u01ac\n#\r#\16"+
 		"#\u01ad\3$\5$\u01b1\n$\3$\3$\3$\7$\u01b6\n$\f$\16$\u01b9\13$\3$\7$\u01bc"+
 		"\n$\f$\16$\u01bf\13$\3$\5$\u01c2\n$\3$\2\3\62%\2\4\6\b\n\f\16\20\22\24"+
-		"\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDF\2\2\2\u01e9\2M\3\2\2\2\4"+
-		"m\3\2\2\2\6z\3\2\2\2\b\177\3\2\2\2\n\u0083\3\2\2\2\f\u008e\3\2\2\2\16"+
-		"\u00a7\3\2\2\2\20\u00ab\3\2\2\2\22\u00b5\3\2\2\2\24\u00c2\3\2\2\2\26\u00c4"+
-		"\3\2\2\2\30\u00c7\3\2\2\2\32\u00cd\3\2\2\2\34\u00d7\3\2\2\2\36\u00d9\3"+
-		"\2\2\2 \u00e4\3\2\2\2\"\u00ec\3\2\2\2$\u00f3\3\2\2\2&\u0101\3\2\2\2(\u010f"+
-		"\3\2\2\2*\u011d\3\2\2\2,\u0129\3\2\2\2.\u012c\3\2\2\2\60\u0136\3\2\2\2"+
-		"\62\u0164\3\2\2\2\64\u0176\3\2\2\2\66\u0178\3\2\2\28\u017f\3\2\2\2:\u018d"+
-		"\3\2\2\2<\u019a\3\2\2\2>\u019d\3\2\2\2@\u01a2\3\2\2\2B\u01a5\3\2\2\2D"+
-		"\u01ab\3\2\2\2F\u01c1\3\2\2\2HI\7\"\2\2IK\7-\2\2JL\7/\2\2KJ\3\2\2\2KL"+
-		"\3\2\2\2LN\3\2\2\2MH\3\2\2\2MN\3\2\2\2NR\3\2\2\2OQ\5\4\3\2PO\3\2\2\2Q"+
-		"T\3\2\2\2RP\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7 \2\2VW\5\22\n\2"+
-		"W[\7!\2\2XZ\5<\37\2YX\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2\2\2\\\3\3\2\2"+
-		"\2][\3\2\2\2^_\7\3\2\2_a\5\6\4\2`b\7/\2\2a`\3\2\2\2ab\3\2\2\2bn\3\2\2"+
-		"\2cd\7\4\2\2df\5\b\5\2eg\7/\2\2fe\3\2\2\2fg\3\2\2\2gn\3\2\2\2hi\7\5\2"+
-		"\2ik\5D#\2jl\7/\2\2kj\3\2\2\2kl\3\2\2\2ln\3\2\2\2m^\3\2\2\2mc\3\2\2\2"+
-		"mh\3\2\2\2n\5\3\2\2\2ot\5\66\34\2pq\7\60\2\2qs\5\66\34\2rp\3\2\2\2sv\3"+
-		"\2\2\2tr\3\2\2\2tu\3\2\2\2uw\3\2\2\2vt\3\2\2\2wx\7\6\2\2xy\5\62\32\2y"+
-		"{\3\2\2\2zo\3\2\2\2{|\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\7\3\2\2\2~\u0080\5"+
-		"\f\7\2\177~\3\2\2\2\u0080\u0081\3\2\2\2\u0081\177\3\2\2\2\u0081\u0082"+
-		"\3\2\2\2\u0082\t\3\2\2\2\u0083\u0088\5\66\34\2\u0084\u0085\7\60\2\2\u0085"+
-		"\u0087\5\66\34\2\u0086\u0084\3\2\2\2\u0087\u008a\3\2\2\2\u0088\u0086\3"+
-		"\2\2\2\u0088\u0089\3\2\2\2\u0089\u008b\3\2\2\2\u008a\u0088\3\2\2\2\u008b"+
-		"\u008c\7\7\2\2\u008c\u008d\5\16\b\2\u008d\13\3\2\2\2\u008e\u008f\5\66"+
-		"\34\2\u008f\u0090\7\7\2\2\u0090\u0091\5\16\b\2\u0091\r\3\2\2\2\u0092\u0093"+
-		"\7\30\2\2\u0093\u0094\7%\2\2\u0094\u0095\5\20\t\2\u0095\u0096\7&\2\2\u0096"+
-		"\u0097\5\16\b\2\u0097\u00a8\3\2\2\2\u0098\u0099\7\31\2\2\u0099\u009a\7"+
-		"%\2\2\u009a\u009b\5\20\t\2\u009b\u009c\7&\2\2\u009c\u009d\5\16\b\2\u009d"+
-		"\u00a8\3\2\2\2\u009e\u009f\7\32\2\2\u009f\u00a0\7\'\2\2\u00a0\u00a1\5"+
-		"\n\6\2\u00a1\u00a2\7(\2\2\u00a2\u00a8\3\2\2\2\u00a3\u00a8\7\33\2\2\u00a4"+
-		"\u00a8\7\34\2\2\u00a5\u00a8\7\35\2\2\u00a6\u00a8\7-\2\2\u00a7\u0092\3"+
-		"\2\2\2\u00a7\u0098\3\2\2\2\u00a7\u009e\3\2\2\2\u00a7\u00a3\3\2\2\2\u00a7"+
-		"\u00a4\3\2\2\2\u00a7\u00a5\3\2\2\2\u00a7\u00a6\3\2\2\2\u00a8\17\3\2\2"+
-		"\2\u00a9\u00ac\7\61\2\2\u00aa\u00ac\5\62\32\2\u00ab\u00a9\3\2\2\2\u00ab"+
-		"\u00aa\3\2\2\2\u00ac\u00b1\3\2\2\2\u00ad\u00ae\7\60\2\2\u00ae\u00b0\5"+
-		"\20\t\2\u00af\u00ad\3\2\2\2\u00b0\u00b3\3\2\2\2\u00b1\u00af\3\2\2\2\u00b1"+
-		"\u00b2\3\2\2\2\u00b2\21\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b4\u00b6\5\24\13"+
-		"\2\u00b5\u00b4\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b7\u00b8"+
-		"\3\2\2\2\u00b8\23\3\2\2\2\u00b9\u00c3\5\36\20\2\u00ba\u00c3\5$\23\2\u00bb"+
-		"\u00c3\5 \21\2\u00bc\u00c3\5&\24\2\u00bd\u00c3\5(\25\2\u00be\u00c3\5*"+
-		"\26\2\u00bf\u00c3\5\"\22\2\u00c0\u00c3\5\30\r\2\u00c1\u00c3\5\26\f\2\u00c2"+
-		"\u00b9\3\2\2\2\u00c2\u00ba\3\2\2\2\u00c2\u00bb\3\2\2\2\u00c2\u00bc\3\2"+
-		"\2\2\u00c2\u00bd\3\2\2\2\u00c2\u00be\3\2\2\2\u00c2\u00bf\3\2\2\2\u00c2"+
-		"\u00c0\3\2\2\2\u00c2\u00c1\3\2\2\2\u00c3\25\3\2\2\2\u00c4\u00c5\5\66\34"+
-		"\2\u00c5\u00c6\5:\36\2\u00c6\27\3\2\2\2\u00c7\u00c8\5\66\34\2\u00c8\u00c9"+
-		"\7\6\2\2\u00c9\u00cb\5\62\32\2\u00ca\u00cc\7/\2\2\u00cb\u00ca\3\2\2\2"+
-		"\u00cb\u00cc\3\2\2\2\u00cc\31\3\2\2\2\u00cd\u00d2\5\22\n\2\u00ce\u00cf"+
-		"\7\27\2\2\u00cf\u00d1\5\34\17\2\u00d0\u00ce\3\2\2\2\u00d1\u00d4\3\2\2"+
-		"\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\33\3\2\2\2\u00d4\u00d2"+
-		"\3\2\2\2\u00d5\u00d8\5\36\20\2\u00d6\u00d8\5\24\13\2\u00d7\u00d5\3\2\2"+
-		"\2\u00d7\u00d6\3\2\2\2\u00d8\35\3\2\2\2\u00d9\u00da\7\b\2\2\u00da\u00db"+
-		"\7#\2\2\u00db\u00dc\5\60\31\2\u00dc\u00e2\7$\2\2\u00dd\u00de\7\'\2\2\u00de"+
-		"\u00df\5\32\16\2\u00df\u00e0\7(\2\2\u00e0\u00e3\3\2\2\2\u00e1\u00e3\5"+
-		"\24\13\2\u00e2\u00dd\3\2\2\2\u00e2\u00e1\3\2\2\2\u00e3\37\3\2\2\2\u00e4"+
-		"\u00e5\7\t\2\2\u00e5\u00e6\7#\2\2\u00e6\u00e7\5\62\32\2\u00e7\u00e8\7"+
-		"$\2\2\u00e8\u00e9\7\'\2\2\u00e9\u00ea\5\22\n\2\u00ea\u00eb\7(\2\2\u00eb"+
-		"!\3\2\2\2\u00ec\u00ed\7\n\2\2\u00ed\u00ee\5\22\n\2\u00ee\u00ef\7\13\2"+
-		"\2\u00ef\u00f0\7#\2\2\u00f0\u00f1\5\62\32\2\u00f1\u00f2\7$\2\2\u00f2#"+
-		"\3\2\2\2\u00f3\u00f4\7\f\2\2\u00f4\u00f5\5\66\34\2\u00f5\u00f6\7\6\2\2"+
-		"\u00f6\u00f7\5\62\32\2\u00f7\u00f8\7\13\2\2\u00f8\u00fb\5\62\32\2\u00f9"+
-		"\u00fa\7\26\2\2\u00fa\u00fc\5\62\32\2\u00fb\u00f9\3\2\2\2\u00fb\u00fc"+
-		"\3\2\2\2\u00fc\u00fd\3\2\2\2\u00fd\u00fe\7\'\2\2\u00fe\u00ff\5\22\n\2"+
-		"\u00ff\u0100\7(\2\2\u0100%\3\2\2\2\u0101\u0102\7\r\2\2\u0102\u0103\7#"+
-		"\2\2\u0103\u0108\5\62\32\2\u0104\u0105\7\60\2\2\u0105\u0107\5\62\32\2"+
-		"\u0106\u0104\3\2\2\2\u0107\u010a\3\2\2\2\u0108\u0106\3\2\2\2\u0108\u0109"+
+		"\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDF\2\3\3\2\61\62\2\u01e9\2M"+
+		"\3\2\2\2\4m\3\2\2\2\6z\3\2\2\2\b\177\3\2\2\2\n\u0083\3\2\2\2\f\u008e\3"+
+		"\2\2\2\16\u00a7\3\2\2\2\20\u00ab\3\2\2\2\22\u00b5\3\2\2\2\24\u00c2\3\2"+
+		"\2\2\26\u00c4\3\2\2\2\30\u00c7\3\2\2\2\32\u00cd\3\2\2\2\34\u00d7\3\2\2"+
+		"\2\36\u00d9\3\2\2\2 \u00e4\3\2\2\2\"\u00ec\3\2\2\2$\u00f3\3\2\2\2&\u0101"+
+		"\3\2\2\2(\u010f\3\2\2\2*\u011d\3\2\2\2,\u0129\3\2\2\2.\u012c\3\2\2\2\60"+
+		"\u0136\3\2\2\2\62\u0164\3\2\2\2\64\u0176\3\2\2\2\66\u0178\3\2\2\28\u017f"+
+		"\3\2\2\2:\u018d\3\2\2\2<\u019a\3\2\2\2>\u019d\3\2\2\2@\u01a2\3\2\2\2B"+
+		"\u01a5\3\2\2\2D\u01ab\3\2\2\2F\u01c1\3\2\2\2HI\7\"\2\2IK\7-\2\2JL\7/\2"+
+		"\2KJ\3\2\2\2KL\3\2\2\2LN\3\2\2\2MH\3\2\2\2MN\3\2\2\2NR\3\2\2\2OQ\5\4\3"+
+		"\2PO\3\2\2\2QT\3\2\2\2RP\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7 \2"+
+		"\2VW\5\22\n\2W[\7!\2\2XZ\5<\37\2YX\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2"+
+		"\2\2\\\3\3\2\2\2][\3\2\2\2^_\7\3\2\2_a\5\6\4\2`b\7/\2\2a`\3\2\2\2ab\3"+
+		"\2\2\2bn\3\2\2\2cd\7\4\2\2df\5\b\5\2eg\7/\2\2fe\3\2\2\2fg\3\2\2\2gn\3"+
+		"\2\2\2hi\7\5\2\2ik\5D#\2jl\7/\2\2kj\3\2\2\2kl\3\2\2\2ln\3\2\2\2m^\3\2"+
+		"\2\2mc\3\2\2\2mh\3\2\2\2n\5\3\2\2\2ot\5\66\34\2pq\7\60\2\2qs\5\66\34\2"+
+		"rp\3\2\2\2sv\3\2\2\2tr\3\2\2\2tu\3\2\2\2uw\3\2\2\2vt\3\2\2\2wx\7\6\2\2"+
+		"xy\5\62\32\2y{\3\2\2\2zo\3\2\2\2{|\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\7\3\2"+
+		"\2\2~\u0080\5\f\7\2\177~\3\2\2\2\u0080\u0081\3\2\2\2\u0081\177\3\2\2\2"+
+		"\u0081\u0082\3\2\2\2\u0082\t\3\2\2\2\u0083\u0088\5\66\34\2\u0084\u0085"+
+		"\7\60\2\2\u0085\u0087\5\66\34\2\u0086\u0084\3\2\2\2\u0087\u008a\3\2\2"+
+		"\2\u0088\u0086\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008b\3\2\2\2\u008a\u0088"+
+		"\3\2\2\2\u008b\u008c\7\7\2\2\u008c\u008d\5\16\b\2\u008d\13\3\2\2\2\u008e"+
+		"\u008f\5\66\34\2\u008f\u0090\7\7\2\2\u0090\u0091\5\16\b\2\u0091\r\3\2"+
+		"\2\2\u0092\u0093\7\30\2\2\u0093\u0094\7%\2\2\u0094\u0095\5\20\t\2\u0095"+
+		"\u0096\7&\2\2\u0096\u0097\5\16\b\2\u0097\u00a8\3\2\2\2\u0098\u0099\7\31"+
+		"\2\2\u0099\u009a\7%\2\2\u009a\u009b\5\20\t\2\u009b\u009c\7&\2\2\u009c"+
+		"\u009d\5\16\b\2\u009d\u00a8\3\2\2\2\u009e\u009f\7\32\2\2\u009f\u00a0\7"+
+		"\'\2\2\u00a0\u00a1\5\n\6\2\u00a1\u00a2\7(\2\2\u00a2\u00a8\3\2\2\2\u00a3"+
+		"\u00a8\7\33\2\2\u00a4\u00a8\7\34\2\2\u00a5\u00a8\7\35\2\2\u00a6\u00a8"+
+		"\7-\2\2\u00a7\u0092\3\2\2\2\u00a7\u0098\3\2\2\2\u00a7\u009e\3\2\2\2\u00a7"+
+		"\u00a3\3\2\2\2\u00a7\u00a4\3\2\2\2\u00a7\u00a5\3\2\2\2\u00a7\u00a6\3\2"+
+		"\2\2\u00a8\17\3\2\2\2\u00a9\u00ac\7\62\2\2\u00aa\u00ac\5\62\32\2\u00ab"+
+		"\u00a9\3\2\2\2\u00ab\u00aa\3\2\2\2\u00ac\u00b1\3\2\2\2\u00ad\u00ae\7\60"+
+		"\2\2\u00ae\u00b0\5\20\t\2\u00af\u00ad\3\2\2\2\u00b0\u00b3\3\2\2\2\u00b1"+
+		"\u00af\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\21\3\2\2\2\u00b3\u00b1\3\2\2"+
+		"\2\u00b4\u00b6\5\24\13\2\u00b5\u00b4\3\2\2\2\u00b6\u00b7\3\2\2\2\u00b7"+
+		"\u00b5\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8\23\3\2\2\2\u00b9\u00c3\5\36\20"+
+		"\2\u00ba\u00c3\5$\23\2\u00bb\u00c3\5 \21\2\u00bc\u00c3\5&\24\2\u00bd\u00c3"+
+		"\5(\25\2\u00be\u00c3\5*\26\2\u00bf\u00c3\5\"\22\2\u00c0\u00c3\5\30\r\2"+
+		"\u00c1\u00c3\5\26\f\2\u00c2\u00b9\3\2\2\2\u00c2\u00ba\3\2\2\2\u00c2\u00bb"+
+		"\3\2\2\2\u00c2\u00bc\3\2\2\2\u00c2\u00bd\3\2\2\2\u00c2\u00be\3\2\2\2\u00c2"+
+		"\u00bf\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c2\u00c1\3\2\2\2\u00c3\25\3\2\2"+
+		"\2\u00c4\u00c5\5\66\34\2\u00c5\u00c6\5:\36\2\u00c6\27\3\2\2\2\u00c7\u00c8"+
+		"\5\66\34\2\u00c8\u00c9\7\6\2\2\u00c9\u00cb\5\62\32\2\u00ca\u00cc\7/\2"+
+		"\2\u00cb\u00ca\3\2\2\2\u00cb\u00cc\3\2\2\2\u00cc\31\3\2\2\2\u00cd\u00d2"+
+		"\5\22\n\2\u00ce\u00cf\7\27\2\2\u00cf\u00d1\5\34\17\2\u00d0\u00ce\3\2\2"+
+		"\2\u00d1\u00d4\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\33"+
+		"\3\2\2\2\u00d4\u00d2\3\2\2\2\u00d5\u00d8\5\36\20\2\u00d6\u00d8\5\24\13"+
+		"\2\u00d7\u00d5\3\2\2\2\u00d7\u00d6\3\2\2\2\u00d8\35\3\2\2\2\u00d9\u00da"+
+		"\7\b\2\2\u00da\u00db\7#\2\2\u00db\u00dc\5\60\31\2\u00dc\u00e2\7$\2\2\u00dd"+
+		"\u00de\7\'\2\2\u00de\u00df\5\32\16\2\u00df\u00e0\7(\2\2\u00e0\u00e3\3"+
+		"\2\2\2\u00e1\u00e3\5\24\13\2\u00e2\u00dd\3\2\2\2\u00e2\u00e1\3\2\2\2\u00e3"+
+		"\37\3\2\2\2\u00e4\u00e5\7\t\2\2\u00e5\u00e6\7#\2\2\u00e6\u00e7\5\62\32"+
+		"\2\u00e7\u00e8\7$\2\2\u00e8\u00e9\7\'\2\2\u00e9\u00ea\5\22\n\2\u00ea\u00eb"+
+		"\7(\2\2\u00eb!\3\2\2\2\u00ec\u00ed\7\n\2\2\u00ed\u00ee\5\22\n\2\u00ee"+
+		"\u00ef\7\13\2\2\u00ef\u00f0\7#\2\2\u00f0\u00f1\5\62\32\2\u00f1\u00f2\7"+
+		"$\2\2\u00f2#\3\2\2\2\u00f3\u00f4\7\f\2\2\u00f4\u00f5\5\66\34\2\u00f5\u00f6"+
+		"\7\6\2\2\u00f6\u00f7\5\62\32\2\u00f7\u00f8\7\13\2\2\u00f8\u00fb\5\62\32"+
+		"\2\u00f9\u00fa\7\26\2\2\u00fa\u00fc\5\62\32\2\u00fb\u00f9\3\2\2\2\u00fb"+
+		"\u00fc\3\2\2\2\u00fc\u00fd\3\2\2\2\u00fd\u00fe\7\'\2\2\u00fe\u00ff\5\22"+
+		"\n\2\u00ff\u0100\7(\2\2\u0100%\3\2\2\2\u0101\u0102\7\r\2\2\u0102\u0103"+
+		"\7#\2\2\u0103\u0108\5\62\32\2\u0104\u0105\7\60\2\2\u0105\u0107\5\62\32"+
+		"\2\u0106\u0104\3\2\2\2\u0107\u010a\3\2\2\2\u0108\u0106\3\2\2\2\u0108\u0109"+
 		"\3\2\2\2\u0109\u010b\3\2\2\2\u010a\u0108\3\2\2\2\u010b\u010d\7$\2\2\u010c"+
 		"\u010e\7/\2\2\u010d\u010c\3\2\2\2\u010d\u010e\3\2\2\2\u010e\'\3\2\2\2"+
 		"\u010f\u0110\7\16\2\2\u0110\u0111\7#\2\2\u0111\u0116\5\66\34\2\u0112\u0113"+
@@ -3093,7 +3112,7 @@ public class SLLanguageParser extends Parser {
 		"\2\2\2\u013e\u013f\3\2\2\2\u013f\u0144\3\2\2\2\u0140\u0141\7\60\2\2\u0141"+
 		"\u0143\5\62\32\2\u0142\u0140\3\2\2\2\u0143\u0146\3\2\2\2\u0144\u0142\3"+
 		"\2\2\2\u0144\u0145\3\2\2\2\u0145\u0147\3\2\2\2\u0146\u0144\3\2\2\2\u0147"+
-		"\u0165\7$\2\2\u0148\u0149\7\61\2\2\u0149\u0165\5\62\32\7\u014a\u014c\7"+
+		"\u0165\7$\2\2\u0148\u0149\t\2\2\2\u0149\u0165\5\62\32\7\u014a\u014c\7"+
 		"%\2\2\u014b\u014d\5\62\32\2\u014c\u014b\3\2\2\2\u014c\u014d\3\2\2\2\u014d"+
 		"\u0152\3\2\2\2\u014e\u014f\7\60\2\2\u014f\u0151\5\62\32\2\u0150\u014e"+
 		"\3\2\2\2\u0151\u0154\3\2\2\2\u0152\u0150\3\2\2\2\u0152\u0153\3\2\2\2\u0153"+
@@ -3104,7 +3123,7 @@ public class SLLanguageParser extends Parser {
 		"\u0161\3\2\2\2\u0160\u015e\3\2\2\2\u0161\u0165\7(\2\2\u0162\u0165\5\64"+
 		"\33\2\u0163\u0165\5\26\f\2\u0164\u013b\3\2\2\2\u0164\u0148\3\2\2\2\u0164"+
 		"\u014a\3\2\2\2\u0164\u0156\3\2\2\2\u0164\u0162\3\2\2\2\u0164\u0163\3\2"+
-		"\2\2\u0165\u016e\3\2\2\2\u0166\u0167\f\t\2\2\u0167\u0168\7\61\2\2\u0168"+
+		"\2\2\u0165\u016e\3\2\2\2\u0166\u0167\f\t\2\2\u0167\u0168\t\2\2\2\u0168"+
 		"\u016a\5\62\32\2\u0169\u016b\7/\2\2\u016a\u0169\3\2\2\2\u016a\u016b\3"+
 		"\2\2\2\u016b\u016d\3\2\2\2\u016c\u0166\3\2\2\2\u016d\u0170\3\2\2\2\u016e"+
 		"\u016c\3\2\2\2\u016e\u016f\3\2\2\2\u016f\63\3\2\2\2\u0170\u016e\3\2\2"+
@@ -3112,25 +3131,25 @@ public class SLLanguageParser extends Parser {
 		"\7*\2\2\u0175\u0177\5\66\34\2\u0176\u0171\3\2\2\2\u0176\u0172\3\2\2\2"+
 		"\u0176\u0173\3\2\2\2\u0176\u0174\3\2\2\2\u0176\u0175\3\2\2\2\u0177\65"+
 		"\3\2\2\2\u0178\u017d\7-\2\2\u0179\u017e\58\35\2\u017a\u017e\5:\36\2\u017b"+
-		"\u017c\7\21\2\2\u017c\u017e\5\64\33\2\u017d\u0179\3\2\2\2\u017d\u017a"+
+		"\u017c\7\24\2\2\u017c\u017e\5\64\33\2\u017d\u0179\3\2\2\2\u017d\u017a"+
 		"\3\2\2\2\u017d\u017b\3\2\2\2\u017d\u017e\3\2\2\2\u017e\67\3\2\2\2\u017f"+
 		"\u0180\7%\2\2\u0180\u0185\5\62\32\2\u0181\u0182\7\60\2\2\u0182\u0184\5"+
 		"\62\32\2\u0183\u0181\3\2\2\2\u0184\u0187\3\2\2\2\u0185\u0183\3\2\2\2\u0185"+
 		"\u0186\3\2\2\2\u0186\u0188\3\2\2\2\u0187\u0185\3\2\2\2\u0188\u018b\7&"+
-		"\2\2\u0189\u018a\7\21\2\2\u018a\u018c\5\64\33\2\u018b\u0189\3\2\2\2\u018b"+
+		"\2\2\u0189\u018a\7\24\2\2\u018a\u018c\5\64\33\2\u018b\u0189\3\2\2\2\u018b"+
 		"\u018c\3\2\2\2\u018c9\3\2\2\2\u018d\u018f\7#\2\2\u018e\u0190\5\62\32\2"+
 		"\u018f\u018e\3\2\2\2\u018f\u0190\3\2\2\2\u0190\u0195\3\2\2\2\u0191\u0192"+
 		"\7\60\2\2\u0192\u0194\5\62\32\2\u0193\u0191\3\2\2\2\u0194\u0197\3\2\2"+
 		"\2\u0195\u0193\3\2\2\2\u0195\u0196\3\2\2\2\u0196\u0198\3\2\2\2\u0197\u0195"+
 		"\3\2\2\2\u0198\u0199\7$\2\2\u0199;\3\2\2\2\u019a\u019b\5> \2\u019b\u019c"+
-		"\5\2\2\2\u019c=\3\2\2\2\u019d\u019e\7\22\2\2\u019e\u01a0\5B\"\2\u019f"+
+		"\5\2\2\2\u019c=\3\2\2\2\u019d\u019e\7\21\2\2\u019e\u01a0\5B\"\2\u019f"+
 		"\u01a1\5@!\2\u01a0\u019f\3\2\2\2\u01a0\u01a1\3\2\2\2\u01a1?\3\2\2\2\u01a2"+
-		"\u01a3\7\23\2\2\u01a3\u01a4\5\16\b\2\u01a4A\3\2\2\2\u01a5\u01a6\7-\2\2"+
+		"\u01a3\7\22\2\2\u01a3\u01a4\5\16\b\2\u01a4A\3\2\2\2\u01a5\u01a6\7-\2\2"+
 		"\u01a6\u01a7\7#\2\2\u01a7\u01a8\5F$\2\u01a8\u01a9\7$\2\2\u01a9C\3\2\2"+
 		"\2\u01aa\u01ac\5\n\6\2\u01ab\u01aa\3\2\2\2\u01ac\u01ad\3\2\2\2\u01ad\u01ab"+
-		"\3\2\2\2\u01ad\u01ae\3\2\2\2\u01aeE\3\2\2\2\u01af\u01b1\7\24\2\2\u01b0"+
+		"\3\2\2\2\u01ad\u01ae\3\2\2\2\u01aeE\3\2\2\2\u01af\u01b1\7\23\2\2\u01b0"+
 		"\u01af\3\2\2\2\u01b0\u01b1\3\2\2\2\u01b1\u01b2\3\2\2\2\u01b2\u01bd\5D"+
-		"#\2\u01b3\u01b7\7/\2\2\u01b4\u01b6\7\24\2\2\u01b5\u01b4\3\2\2\2\u01b6"+
+		"#\2\u01b3\u01b7\7/\2\2\u01b4\u01b6\7\23\2\2\u01b5\u01b4\3\2\2\2\u01b6"+
 		"\u01b9\3\2\2\2\u01b7\u01b5\3\2\2\2\u01b7\u01b8\3\2\2\2\u01b8\u01ba\3\2"+
 		"\2\2\u01b9\u01b7\3\2\2\2\u01ba\u01bc\5D#\2\u01bb\u01b3\3\2\2\2\u01bc\u01bf"+
 		"\3\2\2\2\u01bd\u01bb\3\2\2\2\u01bd\u01be\3\2\2\2\u01be\u01c2\3\2\2\2\u01bf"+
