@@ -1,12 +1,12 @@
 grammar SLLanguage;
 
 s  : (PROGRAMA ID SMCOLON?)? settings* INICIO body FIN subrutine*;
-settings: 'const' assignationConst SMCOLON? | 'tipos' assignationTypes SMCOLON? | 'var' assignationVar SMCOLON?;
+settings: 'const' assignationConst SMCOLON? | 'tipos' assignationTypes SMCOLON? | 'var' declaration SMCOLON?;
 assignationConst: (id (COMA id)* '=' expression)+;
 assignationTypes: objeto+;
-assignationVar: (id (COMA id)* ':' tipo)+;
+assignationVar: (id (COMA id)* ':' tipo);
 objeto: id ':' tipo;
-tipo: 'vector' BIZQ tipoVector BDER tipo | 'matriz' BIZQ tipoVector BDER tipo | 'registro' LIZQ assignationVar LDER | 'numerico' | 'cadena' | 'logico' | ID ;
+tipo: VECTOR BIZQ tipoVector BDER tipo | MATRIZ BIZQ tipoVector BDER tipo | REGISTRO LIZQ assignationVar LDER | NUMERICO | CADENATIPO | LOGICO | ID ;
 tipoVector: ( OPERADOR | expression ) (COMA tipoVector)*;
 body: sentence+;
 sentence: ifSentence
@@ -54,6 +54,12 @@ functionDeclarationParams: 'ref'? declaration (';' 'ref'* declaration)* | ;
 ROP		        : 'and' | 'or';
 PASO            : 'paso';
 SINO            : 'sino';
+VECTOR          : 'vector';
+MATRIZ          : 'matriz';
+REGISTRO        : 'registro';
+NUMERICO        : 'numerico';
+CADENATIPO      : 'cadena';
+LOGICO          : 'logico';
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
 INICIO          : 'inicio';

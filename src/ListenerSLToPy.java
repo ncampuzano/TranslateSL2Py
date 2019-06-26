@@ -22,6 +22,44 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         }
     }
 
+    @Override
+    public void enterAssignationVar(SLLanguageParser.AssignationVarContext ctx) {
+        System.out.print(ctx.id(0).ID().toString());
+        for(int i = 1; i < ctx.id().size(); i++){
+            System.out.print(", " + ctx.id(i).ID().toString());
+        }
+        System.out.print(" = " + translateTipo(ctx.tipo()));
+        System.out.println();
+    }
+    public String translateTipo(SLLanguageParser.TipoContext ctx) {
+        String tipo = "";
+        if (ctx.VECTOR() != null) {
+            if (ctx.tipoVector().expression() != null) {
+                tipo += '[';
+                tipo += translationOfExpression(ctx.tipoVector().expression());
+                tipo += ']';
+            } else {
+                tipo = "[]";
+            }
+        }
+        if (ctx.MATRIZ() != null) {
+            tipo = "[[]]";
+        }
+        if (ctx.NUMERICO() != null) {
+            tipo = "0";
+        }
+        if (ctx.CADENATIPO() != null) {
+            tipo = "\"\"";
+        }
+        if (ctx.LOGICO() != null) {
+            tipo = "TRUE";
+        }
+        if (ctx.ID() != null) {
+            tipo = ctx.ID().toString();
+        }
+        return tipo;
+    }
+
     /*@Override
     public void exitSentence(SLLanguageParser.SentenceContext ctx){
         System.out.println();

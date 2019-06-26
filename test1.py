@@ -1,9 +1,20 @@
 MAX_ALUMNOS = 20
+notas = [MAX_ALUMNOS]
+suma_notas = 0
+prom = 0
+cnb = 0
+k = 0
+pnt = 0
+M3 = [[]]
+v = []
+M = [[]]
+M1 = [[]]
+dias_sem = [7]
 
 for k in range(int(1), int(MAX_ALUMNOS)+1):
 	print(str("\nIngrese nota para alumno numero ") , str( k) , str( ":"))
 	notas = input()
-	sumanotas = sumanotas + notas[k]
+	suma_notas = suma_notas + notas[k]
 prom = suma_notas / MAX_ALUMNOS
 cnb = 0
 for k in range(int(1), int(MAX_ALUMNOS)+1):
