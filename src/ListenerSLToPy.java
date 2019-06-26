@@ -101,6 +101,17 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
         }
         return expr;
     }
+    public String translationOfExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx){
+        String expr = "";
+        expr += translationOfExpression(ctx.expression(0));
+        if(ctx.ROP()!= null){
+            expr += " ";
+            expr += ctx.ROP().toString();
+            expr += " ";
+            expr += translationOfExpression(ctx.expression(1));
+        }
+        return expr;
+    }
     @Override
     public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
         System.out.print("))");
@@ -108,6 +119,10 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     @Override
     public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx){
         System.out.print("if ");
+    }
+    @Override
+    public void enterExpressionBoolean(SLLanguageParser.ExpressionBooleanContext ctx) {
+        System.out.print(translationOfExpression(ctx.expression()));
     }
     @Override public void enterBodyIfSentence(SLLanguageParser.BodyIfSentenceContext ctx) {
         System.out.print(":");
@@ -168,6 +183,36 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     public void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) {
         amountOfTabsStartOfSentence--;
     }
+    @Override
+    public void enterSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx){
+        amountOfTabsStartOfSentence++;
+    }
+
+    @Override
+    public void exitSwitchSentence(SLLanguageParser.SwitchSentenceContext ctx){
+        amountOfTabsStartOfSentence--;
+    }
+
+    @Override
+    public void enterCaseSentence(SLLanguageParser.CaseSentenceContext ctx) {
+        System.out.print("if "
+                + translationOfExpressionBoolean(ctx.expressionBoolean())
+                + ":");
+
+    }
+    @Override
+    public void exitCaseSentence(SLLanguageParser.CaseSentenceContext ctx) {
+
+        System.out.println();
+        System.out.print("el");
+        //System.out.print("if ");
+    }
+    public void enterDefaultSentence(SLLanguageParser.DefaultSentenceContext ctx) {
+        System.out.print("se");
+
+    }
+
+
 
 
 

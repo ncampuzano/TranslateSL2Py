@@ -1,7 +1,0 @@
-print("\nSuma de numeros pares entre 1 y n.\nPor favor " , "ingrese un valor para n: ")
-n = input()
-suma = 0
-for k in range(2, n, 2):
-	suma = suma + k
-	suma = suma + 2
-print("\nLa suma es " , suma)
