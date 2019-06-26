@@ -1,14 +1,14 @@
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.List;
+
 public class ListenerSLToPy extends SLLanguageBaseListener {
     public int amountOfTabsStartOfSentence = 0;
 
     @Override
     public void enterAssignationConst(SLLanguageParser.AssignationConstContext ctx){
-        String value = ctx.ID().toString(); //Get the string of IDs
-        value = value.replace(","," ="); //Make it one big assignation
-        value = value.substring(1,value.length()-1); //Remove first and last characters [ ]
-        System.out.print(value + " = ");
+        String value = ctx.id(0).ID().toString(); //Get the string of IDs
+        System.out.print(value + " = " + translationOfExpression(ctx.expression(0)));
     }
     @Override
     public void exitAssignationConst(SLLanguageParser.AssignationConstContext ctx) {
@@ -28,33 +28,45 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }*/
 
     @Override
-    public void enterConstant(SLLanguageParser.ConstantContext ctx) {
-        String expr = "";
-        if(ctx.NUM()!= null) {
-            expr = ctx.NUM().toString();
-        }
-        if(ctx.CADENA()!= null) {
-            expr = ctx.CADENA().toString();
-        }
-        if(ctx.BOOL()!= null) {
-            expr = ctx.BOOL().toString();
-        }
-        if(ctx.DOUBLE()!= null) {
-            expr = ctx.DOUBLE().toString();
-        }
-        if(ctx.ID()!= null) {
-            expr = ctx.ID().toString();
-        }
-        System.out.print(expr);
-    }
-    @Override
     public void enterPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
-        System.out.print("print(");
-        //System.out.print();
+        String expr = translationOfExpression(ctx.expression(0));
+        System.out.print("print(str(" +  expr);
+        for(int i = 1; i <= ctx.expression().size()-1;i++){
+            expr = translationOfExpression(ctx.expression(i));
+            System.out.print(") , str( " + expr);
+        }
+    }
+
+    public String translationOfExpression(SLLanguageParser.ExpressionContext ctx){
+        String expr = "";
+        if(ctx.constant()!= null) {
+            if (ctx.constant().NUM() != null) {
+                expr = ctx.constant().NUM().toString();
+            } else if (ctx.constant().CADENA() != null) {
+                expr = ctx.constant().CADENA().toString();
+            } else if (ctx.constant().BOOL() != null) {
+                expr = ctx.constant().BOOL().toString();
+            } else if (ctx.constant().DOUBLE() != null) {
+                expr = ctx.constant().DOUBLE().toString();
+            } else if (ctx.constant().id() != null && ctx.constant().id().ID() != null) {
+                expr = ctx.constant().id().ID().toString();
+            }
+        }
+
+        else if(ctx.e1 != null ){
+            if(ctx.e2 != null){
+                expr += translationOfExpression(ctx.e1);
+                expr += " ";
+                expr += ctx.OPERADOR().toString();
+                expr += " ";
+                expr += translationOfExpression(ctx.e2);
+            }
+        }
+        return expr;
     }
     @Override
     public void exitPrintSentence(SLLanguageParser.PrintSentenceContext ctx) {
-        System.out.print(")");
+        System.out.print("))");
     }
     @Override
     public void enterIfSentence(SLLanguageParser.IfSentenceContext ctx){
@@ -83,24 +95,49 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
     }
     @Override public void exitReadSentence(SLLanguageParser.ReadSentenceContext ctx) {
 
-        System.out.print(ctx.ID(0).toString());
-        for(int i = 1; i <= ctx.ID().size()-1; i++){
-            System.out.print(ctx.ID(i).toString());
+        System.out.print(ctx.id(0).ID().toString());
+        for(int i = 1; i <= ctx.id().size()-1; i++){
+            System.out.print(" , " + ctx.id(i).ID().toString());
         }
         System.out.print(" = input()");
 
-        for(int i = 0; i < ctx.ID().size()-1; i++){
+        for(int i = 0; i < ctx.id().size()-1; i++){
             System.out.print(" , input()");
         }
+    }
+    @Override public void enterAssignationSentence(SLLanguageParser.AssignationSentenceContext ctx) {
+        String id = ctx.id().ID().toString();
+        String expr = translationOfExpression(ctx.expression());
+        System.out.print(id + " = " + expr);
+    }
+
+    @Override
+    public void enterRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) {
+        System.out.print("for "
+                +  ctx.id().getText()
+                + " in range(int("
+                + translationOfExpression(ctx.expression(0))
+                + "), int("
+                + translationOfExpression(ctx.expression(1))
+                + ")+1");
+        if(ctx.PASO()!= null){
+            System.out.print(", int(" + translationOfExpression(ctx.expression(2))+")");
+        }
+        System.out.print("):");
+        amountOfTabsStartOfSentence++;
+    }
+
+    @Override
+    public void exitRepeatSentence(SLLanguageParser.RepeatSentenceContext ctx) {
+        amountOfTabsStartOfSentence--;
     }
 
 
 
-    @Override public void visitTerminal(TerminalNode node) {
+/*    @Override public void visitTerminal(TerminalNode node) {
         //System.out.println("visiting node: " + node.toString());
         String wordToPrint = node.toString();
-        if(wordToPrint.equals(",")
-                || wordToPrint.equals("<")
+        if( wordToPrint.equals("<")
                 || wordToPrint.equals(">")
                 || wordToPrint.equals(">=")
                 || wordToPrint.equals("<=")
@@ -121,7 +158,7 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
             System.out.print(" "+wordToPrint + " ");
 
         }
-    }
+    }*/
 
 
 

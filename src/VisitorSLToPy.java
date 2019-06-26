@@ -1,7 +1,7 @@
 public class VisitorSLToPy<T> extends SLLanguageBaseVisitor<T> {
     @Override
     public T visitAssignationConst(SLLanguageParser.AssignationConstContext ctx) {
-        String value = ctx.ID().toString(); //Get the string of IDs
+        String value = ctx.id().toString(); //Get the string of IDs
         value = value.replace(","," ="); //Make it one big assignation
         value = value.substring(1,value.length()-1); //Remove first and last characters [ ]
         System.out.println(value + " = " + visitChildren(ctx));
@@ -34,8 +34,8 @@ public class VisitorSLToPy<T> extends SLLanguageBaseVisitor<T> {
         if(ctx.DOUBLE()!= null) {
             expr = ctx.DOUBLE().toString();
         }
-        if(ctx.ID()!= null) {
-            expr = ctx.ID().toString();
+        if(ctx.id()!= null) {
+            expr = ctx.id().toString();
         }
         return (T)expr;
     }

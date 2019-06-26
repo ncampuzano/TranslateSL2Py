@@ -26,13 +26,13 @@ sinoSentence : ifSentence | sentence ;
 ifSentence: 'si' PIZQ expressionBoolean PDER (LIZQ bodyIfSentence LDER | sentence);
 whileSentence: 'mientras' PIZQ expression PDER LIZQ body LDER;
 doWhileSentence: 'repetir' body 'hasta' PIZQ expression PDER ;
-repeatSentence: 'desde' assignationSentence 'hasta' expression  ('paso' expression)? LIZQ body LDER;
+repeatSentence: 'desde' id '=' expression 'hasta' expression  (PASO expression)? LIZQ body LDER;
 printSentence: 'imprimir' PIZQ expression (COMA expression)* PDER SMCOLON?;
 readSentence: 'leer' PIZQ id (COMA id)* PDER SMCOLON?;
 switchSentence: 'eval' LIZQ caseSentence+ (SINO sentence)? LDER;
 caseSentence: 'caso' PIZQ expressionBoolean PDER sentence*;
 expressionBoolean: expression (('and' | 'or' )expression)? ;
-expression:  expression OPERADOR expression SMCOLON?
+expression:  e1=expression OPERADOR e2=expression SMCOLON?
             | PIZQ expression? (COMA expression)* PDER
             | OPERADOR expression
             | BIZQ expression? (COMA expression)* BDER
@@ -50,6 +50,7 @@ functionDeclartion: ID PIZQ functionDeclarationParams PDER;
 declaration: assignationVar+;
 functionDeclarationParams: 'ref'? declaration (';' 'ref'* declaration)* | ;
 
+PASO            : 'paso';
 SINO            : 'sino';
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
