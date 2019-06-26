@@ -61,6 +61,11 @@ public class ListenerSLToPy extends SLLanguageBaseListener {
                     }
                     expr += ")";
                 }
+                if(ctx.constant().id().vector()!= null){
+                    expr += "[";
+                    expr += translationOfExpression(ctx.constant().id().vector().expression(0));
+                    expr += "]";
+                }
             }
         }
         else if(ctx.callToFunctionSentence() != null){
